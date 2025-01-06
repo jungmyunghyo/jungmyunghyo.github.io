@@ -18,7 +18,7 @@
 			.div-container-item {
 				margin:1% 0;padding:20px;background-color:#FFFFFF;border-radius:15px;box-shadow:0px 10px 70px 0px rgba(29, 34, 97, 0.08);
 			}
-			.div-header-line {
+			.div-header-line-row {
 				border-top:5px solid #E9ECF2;width:100%;margin:20px 0px;
 			}
 			.div-header {
@@ -28,21 +28,22 @@
 				font-size:25px;font-weight:600;
 			}
 			.div-body {
-				margin-left:6%;
+				margin-left:8%;
 			}
-			.div-body-line {
+			.div-body-line-row {
 				border-top:1px solid #E9ECF2;width:100%;margin:20px 0px;
 			}
 			.div-body .span-title {
 				font-size:20px;font-weight:600;
 			}
 			.div-body-container {
+				border-top:1px solid #E9ECF2;margin-top:20px;
 			}
 			.ul-item-left {
-				width:30%;height:100%;display:inline-block;vertical-align:top;color:#7E8CA0;
+				width:30%;height:100%;margin:0px;display:inline-block;vertical-align:top;
 			}
 			.ul-item-right {
-				width:50%;height:100%;display:inline-block;vertical-align:top;
+				width:50%;height:100%;margin:0px;display:inline-block;vertical-align:top;border-left:1px solid #E9ECF2;
 			}
 			.ul-item-middle {
 				width:100%;height:100%;display:inline-block;vertical-align:top;
@@ -50,11 +51,11 @@
 			.li-item {
 				font-size:15px;font-weight:400;margin-top:5px;
 			}
+			.li-item-line {
+				border-top:1px solid #E9ECF2;width:100%;margin:20px 0px;list-style:none;
+			}
 			.li-item-sub {
 				font-size:12px;font-weight:400;margin-top:2px;color:#7E8CA0;list-style:none;
-			}
-			.li-item-red::marker {
-				color:#ea002c;
 			}
 		</style>
 	</head>
@@ -64,121 +65,147 @@
 				<div class="div-header">
 					<span class="span-title">Projects.</span>
 				</div>
-				<div class="div-header-line"></div>
+				<div class="div-header-line-row"></div>
 				<div class="div-body">
-					<span class="span-title">한화호텔앤드리조트 Local-Live 쇼핑몰 구축 및 운영</span>
+					<span class="span-title">한화호텔앤드리조트 Local-Live</span>
 					<div class="div-body-container">
 						<ul class="ul-item-left">
-							<li class="li-item">2021-06~2023-04</li>
-							<li class="li-item">Web.(FO/BO) 3인</li>
+							<li class="li-item">구축</li>
+							<li class="li-item-sub">- 2021-06 ~ 2021-12</li>
+							<li class="li-item-sub">- Web.(FO/BO) 4인</li>
 						</ul>
 						<ul class="ul-item-right">
-							<li class="li-item">SNS 로그인 및 회원 가입 및 공유하기 연동</li>
-							<li class="li-item-sub">-Naver, Kakao, Facebook 등 관련 프로세스 구현</li>
+							<li class="li-item">SNS 로그인 및 회원 가입 연동</li>
+							<li class="li-item-sub">- Kakao, Naver, Google, Apple 관련 프로세스 구현</li>
+							<li class="li-item">SNS 공유하기 연동</li>
+							<li class="li-item-sub">- Kakao, Facebook 관련 프로세스 구현</li>
 							<li class="li-item">H-LIVE Club 연동</li>
-							<li class="li-item-sub">-회원 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 							<li class="li-item">HABIS 내부 기간계 연동</li>
-							<li class="li-item-sub">-주문 결제 및 정산 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 결제 및 정산 관련 프로세스 구현</li>
 							<li class="li-item">스마트택배 배송 조회 및 추적 API 연동</li>
-							<li class="li-item-sub">-회원 및 주문 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 결제 관련 프로세스 구현</li>
 							<li class="li-item">핑거푸시 알림톡 및 LMS 솔루션 연동</li>
-							<li class="li-item-sub">-회원 및 주문 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 결제 관련 프로세스 구현</li>
 							<li class="li-item">외부 메일 솔루션 연동</li>
-							<li class="li-item-sub">-회원 및 주문 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 결제 관련 프로세스 구현</li>
+						</ul>
+					</div>
+					<div class="div-body-container">
+						<ul class="ul-item-left">
+							<li class="li-item">운영</li>
+							<li class="li-item-sub">- 2022-01 ~ 2023-04</li>
+							<li class="li-item-sub">- BackEnd.(FO/BO) 2인</li>
+						</ul>
+						<ul class="ul-item-right">
 							<li class="li-item">Slow Query 튜닝</li>
-							<li class="li-item-sub">-Zenius-APM (1 min -> 5 sec)</li>
-							<li class="li-item">KG이니시스 일반 및 정기 결제 연동</li>
-							<li class="li-item-sub">-회원 및 주문 결제 관련 프로세스 구현</li>
+							<li class="li-item-sub">- Zenius-APM (1 min -> 5 sec)</li>
+							<li class="li-item">KG 이니시스 정기 결제 연동</li>
+							<li class="li-item-sub">- 회원 및 정산 관련 프로세스 구현</li>
 							<li class="li-item">한화호텔앤드리조트 REFRESH 포인트 연동</li>
-							<li class="li-item-sub">-주문 결제 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 결제 및 정산 관련 프로세스 구현</li>
 							<li class="li-item">현대 EZWEL 일반 포인트 연동</li>
-							<li class="li-item-sub">-주문 결제 관련 프로세스 구현</li>
-							<li class="li-item">GTM 연동</li>
-							<li class="li-item-sub">-회원 및 주문 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 결제 및 정산 관련 프로세스 구현</li>
+							<li class="li-item">SCI 평가정보 API 연동</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 							<li class="li-item">외부 복지몰 연동</li>
-							<li class="li-item-sub">-회원 관련 프로세스 구현</li>
-							<li class="li-item">SCI평가정보 API 연동</li>
-							<li class="li-item-sub">-회원 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 							<li class="li-item">ISMS 인증 WEB/WAS 보안 처리</li>
-							<li class="li-item-sub">-Petra Cipher 솔루션 적용 지원</li>
-							<li class="li-item-sub">-Chakra Max 솔루션 적용 지원</li>
-							<li class="li-item-sub">-개인정보 접속 기록 관리 솔루션 적용 지원</li>
-							<li class="li-item-sub">-개인정보 데이터 변환 솔루션 적용 지원</li>
-							<li class="li-item-sub">-개인정보처리방침 준수 관련 프로세스 구현</li>
+							<li class="li-item-sub">- Petra Cipher 솔루션 적용 지원</li>
+							<li class="li-item-sub">- Chakra Max 솔루션 적용 지원</li>
+							<li class="li-item-sub">- 위즈코리아 개인정보 접속 기록 관리 솔루션 적용 지원</li>
+							<li class="li-item-sub">- 하이젠 개인정보 비식별화 솔루션 적용 지원</li>
+							<li class="li-item-sub">- 개인정보처리방침 준수 관련 프로세스 구현</li>
+							<li class="li-item">Google Analytics 및 Google Tag Manager 연동</li>
 						</ul>
 					</div>
 				</div>
-				<div class="div-body-line"></div>
+				<div class="div-body-line-row"></div>
 				<div class="div-body">
-					<span class="span-title">SK 시그넷 Express 구축 및 운영</span>
+					<span class="span-title">SK 시그넷 Express</span>
 					<div class="div-body-container">
 						<ul class="ul-item-left">
-							<li class="li-item">2023-03~</li>
-							<li class="li-item">BackEnd.(FO/BO) 1인</li>
-							<li class="li-item">https://www-sksignet-com</li>
+							<li class="li-item">구축</li>
+							<li class="li-item-sub">- </li>
+							<li class="li-item-sub">- BackEnd.(FO/BO) 2인</li>
 						</ul>
 						<ul class="ul-item-right">
 							<li class="li-item">SAP ERP 연동</li>
-							<li class="li-item-sub">-주문 및 견적 및 발주 관련 프로세스 구현</li>
-							<li class="li-item">Salesforce API 연동</li>
-							<li class="li-item-sub">-회원 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 주문 및 견적 및 발주 관련 프로세스 구현</li>
 							<li class="li-item">내부 메일 솔루션 연동</li>
-							<li class="li-item-sub">-회원 및 주문 및 견적 및 발주 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 및 견적 및 발주 관련 프로세스 구현</li>
 							<li class="li-item">ISMS 인증 WEB/WAS 보안 처리</li>
-							<li class="li-item-sub">-개인정보처리방침 준수 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 개인정보처리방침 준수 관련 프로세스 구현</li>
+						</ul>
+					</div>
+					<div class="div-body-container">
+						<ul class="ul-item-left">
+							<li class="li-item">운영</li>
+							<li class="li-item-sub">- </li>
+							<li class="li-item-sub">- BackEnd.(FO/BO) 1인</li>
+						</ul>
+						<ul class="ul-item-right">
+							<li class="li-item">Salesforce API 연동</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 						</ul>
 					</div>
 				</div>
-				<div class="div-body-line"></div>
+				<div class="div-body-line-row"></div>
 				<div class="div-body">
-					<span class="span-title">Bauerlab 구축 및 운영</span>
+					<span class="span-title">Bauerlab</span>
 					<div class="div-body-container">
 						<ul class="ul-item-left">
-							<li class="li-item">2023-10~2024-02</li>
-							<li class="li-item">BackEnd.(FO) Web.(BO) 1인</li>
-							<li class="li-item">https://www-bauer-lab-com</li>
+							<li class="li-item">구축</li>
+							<li class="li-item-sub">- </li>
+							<li class="li-item-sub">- BackEnd.(FO) Web.(BO) 1인</li>
 						</ul>
 						<ul class="ul-item-right">
 							<li class="li-item">외부 메일 솔루션 연동</li>
-							<li class="li-item-sub">-회원 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 							<li class="li-item">외부 SMTP 솔루션 연동</li>
-							<li class="li-item-sub">-회원 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 						</ul>
 					</div>
 				</div>
-				<div class="div-body-line"></div>
+				<div class="div-body-line-row"></div>
 				<div class="div-body">
-					<span class="span-title">Noriter 구축</span>
+					<span class="span-title">Noriter</span>
 					<div class="div-body-container">
 						<ul class="ul-item-left">
-							<li class="li-item">2023-11~</li>
-							<li class="li-item">BackEnd.(FO/BO) 1인</li>
+							<li class="li-item">구축</li>
+							<li class="li-item-sub">- </li>
+							<li class="li-item-sub">- BackEnd.(FO/BO) 1인</li>
 						</ul>
 						<ul class="ul-item-right">
 							<li class="li-item">하이케어 연동</li>
-							<li class="li-item-sub">-회원 및 주문 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 관련 프로세스 구현</li>
 							<li class="li-item">외부 메일 솔루션 연동</li>
-							<li class="li-item-sub">-회원 및 주문 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 및 주문 관련 프로세스 구현</li>
 							<li class="li-item">외부 SMTP 솔루션 연동</li>
-							<li class="li-item-sub">-회원 관련 프로세스 구현</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 						</ul>
 					</div>
 				</div>
-				<div class="div-body-line"></div>
+				<div class="div-body-line-row"></div>
 				<div class="div-body">
-					<span class="span-title">SK 시그넷 CPOS 개선 및 고도화</span>
+					<span class="span-title">SK 시그넷 CPOS</span>
 					<div class="div-body-container">
 						<ul class="ul-item-left">
-							<li class="li-item">2024-06~</li>
-							<li class="li-item">Web.(FO/BO) 2인</li>
+							<li class="li-item">고도화</li>
+							<li class="li-item-sub">- </li>
+							<li class="li-item-sub">- Web.(FO/BO) 2인</li>
 						</ul>
 						<ul class="ul-item-right">
-							<li class="li-item">OCPP 1.6 protocol 고도화</li>
-							<li class="li-item-sub">-충전 및 회원 및 결제 관련 프로세스 고도화</li>
-							<li class="li-item">환경부 로밍 연동 고도화</li>
-							<li class="li-item-sub">-충전 및 회원 관련 프로세스 고도화</li>
 							<li class="li-item">Slow Query 튜닝</li>
-							<li class="li-item-sub">-log4jdbc (10 min -> 30 sec)</li>
+							<li class="li-item-sub">- log4jdbc (10 min -> 15 sec)</li>
+							<li class="li-item">OCPP 1.6 Protocol 고도화</li>
+							<li class="li-item-sub">- 회원 및 충전 및 결제 관련 프로세스 고도화</li>
+							<li class="li-item">KG 이니시스 일반 결제 고도화</li>
+							<li class="li-item-sub">- 결제 관련 프로세스 고도화</li>
+							<li class="li-item">환경부 로밍 연동 고도화</li>
+							<li class="li-item-sub">- 회원 및 충전 관련 프로세스 고도화</li>
+							<li class="li-item">SCI 평가정보 API 연동</li>
+							<li class="li-item-sub">- 회원 관련 프로세스 구현</li>
 						</ul>
 					</div>
 				</div>
@@ -187,7 +214,7 @@
 				<div class="div-header">
 					<span class="span-title">Skills.</span>
 				</div>
-				<div class="div-header-line"></div>
+				<div class="div-header-line-row"></div>
 				<div class="div-body">
 					<span class="span-title">BackEnd.</span>
 					<div class="div-body-container">
@@ -195,27 +222,27 @@
 							<li class="li-item">Java</li>
 							<li class="li-item">eGovFrame, STS</li>
 							<li class="li-item">Spring</li>
-							<li class="li-item-sub">-Spring Boot, Spring MVC, Spring Batch, Spring Security</li>
+							<li class="li-item-sub">- Spring Boot, Spring MVC, Spring Batch, Spring Security</li>
 						</ul>
 					</div>
 				</div>
-				<div class="div-body-line"></div>
+				<div class="div-body-line-row"></div>
 				<div class="div-body">
 					<span class="span-title">DataBase.</span>
 					<div class="div-body-container">
 						<ul class="ul-item-middle">
 							<li class="li-item">RDBMS</li>
-							<li class="li-item-sub">-MySQL, MariaDB</li>
+							<li class="li-item-sub">- MySQL, MariaDB</li>
 						</ul>
 					</div>
 				</div>
-				<div class="div-body-line"></div>
+				<div class="div-body-line-row"></div>
 				<div class="div-body">
 					<span class="span-title">Web.</span>
 					<div class="div-body-container">
 						<ul class="ul-item-middle">
 							<li class="li-item">JSP</li>
-							<li class="li-item-sub">-JavaScript, jQuery, HTML/CSS</li>
+							<li class="li-item-sub">- JavaScript, jQuery, HTML/CSS</li>
 						</ul>
 					</div>
 				</div>

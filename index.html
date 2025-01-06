@@ -10,29 +10,51 @@
 		<title></title>
 		<style>
 			.body-container {
-				margin:0px;height:100%;box-sizing:border-box;background-color:#ffffff;
+				margin:100px auto;height:100%;box-sizing:border-box;background-color:#ffffff;
 			}
 			.div-container {
-				width:60%;height:100%;margin:100px auto 0;
+				width:60%;height:100%;margin:auto;
 			}
 			.div-container-item {
-				margin:15px auto 0;padding:20px;background-color:#FFFFFF;border-radius:15px;box-shadow:0px 10px 70px 0px rgba(29, 34, 97, 0.08);
+				margin:1% 0;padding:20px;background-color:#FFFFFF;border-radius:15px;box-shadow:0px 10px 70px 0px rgba(29, 34, 97, 0.08);
+			}
+			.div-header-line {
+				border-top:5px solid #E9ECF2;width:100%;margin:20px 0px;
 			}
 			.div-header {
+				margin-left:5%;
 			}
-			.div-header h1 {
-				font-size:25px;font-weight:600;margin-left:5%;margin-bottom:10px;;
+			.div-header .span-title {
+				font-size:25px;font-weight:600;
 			}
-			.div-header li {
-				font-size:15px;font-weight:500;margin-left:5%;margin-bottom:5px;;
+			.div-body {
+				margin-left:6%;
 			}
-			.div-line {
-				border-top:1px solid #E9ECF2;width:100%;margin:20px auto;
+			.div-body-line {
+				border-top:1px solid #E9ECF2;width:100%;margin:20px 0px;
 			}
-			.div-footer {
+			.div-body .span-title {
+				font-size:20px;font-weight:600;
 			}
-			.div-footer li {
-				font-size:12px;font-weight:400;margin-left:5%;margin-bottom:5px;color:#7E8CA0;
+			.div-body-container {
+			}
+			.ul-item-left {
+				width:30%;height:100%;display:inline-block;vertical-align:top;color:#7E8CA0;
+			}
+			.ul-item-right {
+				width:30%;height:100%;display:inline-block;vertical-align:top;
+			}
+			.ul-item-middle {
+				width:100%;height:100%;display:inline-block;vertical-align:top;
+			}
+			.li-item {
+				font-size:15px;font-weight:400;margin-bottom:5px;
+			}
+			.li-marker-red::marker {
+				color:#ea002c;
+			}
+			.p-item {
+				font-size:12px;font-weight:400;margin-top:5px;color:#7E8CA0;
 			}
 		</style>
 	</head>
@@ -40,34 +62,105 @@
 		<div class="div-container">
 			<div class="div-container-item">
 				<div class="div-header">
-					<h1>h1</h1>
-					<ul>
-						<li>li</li>
-						<li>li</li>
-					</ul>
+					<span class="span-title">Projects.</span>
 				</div>
-				<div class="div-line"></div>
-				<div class="div-footer">
-					<ul>
-						<li>li</li>
-						<li>li</li>
-					</ul>
+				<div class="div-header-line"></div>
+				<div class="div-body">
+					<span class="span-title">한화호텔앤드리조트 Local-Live 쇼핑몰 구축 및 운영</span>
+					<div class="div-body-container">
+						<ul class="ul-item-left">
+							<li class="li-item">2021-06~2023-04</li>
+							<li class="li-item">Web.</li>
+						</ul>
+						<ul class="ul-item-right">
+							<li class="li-item li-marker-red">dtl</li>
+							<li class="li-item">dtl<p class="p-item">asd</p></li>
+							<li class="li-item">dtl</li>
+						</ul>
+					</div>
+				</div>
+				<div class="div-body-line"></div>
+				<div class="div-body">
+					<span class="span-title">SK 시그넷 Express 구축 및 운영</span>
+					<div class="div-body-container">
+						<ul class="ul-item-left">
+							<li class="li-item">2023-03~</li>
+							<li class="li-item">BackEnd.</li>
+							<li class="li-item">https://www-sksignet-com</li>
+						</ul>
+						<ul class="ul-item-right">
+						</ul>
+					</div>
+				</div>
+				<div class="div-body-line"></div>
+				<div class="div-body">
+					<span class="span-title">Bauerlab 구축 및 운영</span>
+					<div class="div-body-container">
+						<ul class="ul-item-left">
+							<li class="li-item">2023-10~2024-02</li>
+							<li class="li-item">BackEnd.</li>
+							<li class="li-item">https://www-bauer-lab-com</li>
+						</ul>
+						<ul class="ul-item-right">
+						</ul>
+					</div>
+				</div>
+				<div class="div-body-line"></div>
+				<div class="div-body">
+					<span class="span-title">Noriter 구축</span>
+					<div class="div-body-container">
+						<ul class="ul-item-left">
+							<li class="li-item">2023-11~</li>
+							<li class="li-item">BackEnd.</li>
+						</ul>
+						<ul class="ul-item-right">
+						</ul>
+					</div>
+				</div>
+				<div class="div-body-line"></div>
+				<div class="div-body">
+					<span class="span-title">SK 시그넷 CPOS 개선 및 고도화</span>
+					<div class="div-body-container">
+						<ul class="ul-item-left">
+							<li class="li-item">2024-06~</li>
+						</ul>
+						<ul class="ul-item-right">
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="div-container-item">
 				<div class="div-header">
-					<h1>h1</h1>
-					<ul>
-						<li>li</li>
-						<li>li</li>
-					</ul>
+					<span class="span-title">Skills.</span>
 				</div>
-				<div class="div-line"></div>
-				<div class="div-footer">
-					<ul>
-						<li>li</li>
-						<li>li</li>
-					</ul>
+				<div class="div-header-line"></div>
+				<div class="div-body">
+					<span class="span-title">BackEnd.</span>
+					<div class="div-body-container">
+						<ul class="ul-item-middle">
+							<li class="li-item">Java</li>
+							<li class="li-item">eGovFrame, STS</li>
+							<li class="li-item">Spring<p class="p-item">Spring Boot, Spring MVC, Spring Batch, Spring Security</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="div-body-line"></div>
+				<div class="div-body">
+					<span class="span-title">DataBase.</span>
+					<div class="div-body-container">
+						<ul class="ul-item-middle">
+							<li class="li-item">Spring<p class="p-item">Spring Boot, Spring MVC, Spring Batch, Spring Security</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="div-body-line"></div>
+				<div class="div-body">
+					<span class="span-title">Web.</span>
+					<div class="div-body-container">
+						<ul class="ul-item-middle">
+							<li class="li-item">JSP<p class="p-item">JavaScript, jQuery, HTML/CSS</p></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

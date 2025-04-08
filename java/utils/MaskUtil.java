@@ -48,7 +48,7 @@ public class MaskUtil {
 	private static final String						_alw_email					= ("[0-9a-zA-Z._-]");
 	private static final int						_alw_email_strt				= (4);
 	private static final int						_alw_email_end				= (20);
-	private static final String						_reg_email					= ("(^[" + (_alw_email) + "]{" + (_alw_email_strt) + "," + (_alw_email_end) + "}[@][0-9a-zA-Z_-]+[.][a-zA-Z]+$)|(^[" + (_alw_email) + "]{" + (_alw_email_strt) + "," + (_alw_email_end) + "}[@][0-9a-zA-Z_-]+[.][a-zA-Z]+[.][a-zA-Z]+$)");
+	private static final String						_reg_email					= ("(^" + (_alw_email) + "{" + (_alw_email_strt) + "," + (_alw_email_end) + "}[@][0-9a-zA-Z_-]+[.][a-zA-Z]+$)|(^" + (_alw_email) + "{" + (_alw_email_strt) + "," + (_alw_email_end) + "}[@][0-9a-zA-Z_-]+[.][a-zA-Z]+[.][a-zA-Z]+$)");
 	private static final Pattern					_ptrn_email					= (Pattern.compile(_reg_email));
 	private static final int						_loc_email					= (_alw_email_strt);
 	private static final String						_rplc_email					= ("(?<=[" + (_alw_email) + "]{" + (_loc_email) + "})[" + (_alw_email) + "]");
@@ -66,7 +66,7 @@ public class MaskUtil {
 	private static final String						_alw_id						= ("[0-9a-z]");
 	private static final int						_alw_id_strt				= (4);
 	private static final int						_alw_id_end					= (20);
-	private static final String						_reg_id						= ("^[" + (_alw_id) + "]{" + (_alw_id_strt) + "," + (_alw_id_end) + "}$");
+	private static final String						_reg_id						= ("^" + (_alw_id) + "{" + (_alw_id_strt) + "," + (_alw_id_end) + "}$");
 	private static final Pattern					_ptrn_id					= (Pattern.compile(_reg_id));
 	private static final int						_loc_id						= (_alw_id_strt);
 	private static final String						_rplc_id					= ("(?<=[" + (_alw_id) + "]{" + (_loc_id) + "})[" + (_alw_id) + "]");

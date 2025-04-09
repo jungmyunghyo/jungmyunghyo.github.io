@@ -11,20 +11,22 @@ const $reg_bizr			= (new RegExp("(^[1-9]{1}[0-9]{2}[0-9]{2}[0-9]{5}$)|(^[1-9]{1}
 const $reg_acct			= (new RegExp("(^[0-9-]{7,19}[0-9]$)|(^[0-9]{8,20}$)"));
 const $reg_pst			= (new RegExp("(^[0-9]{5}$)|(^[0-9]{3}[-][0-9]{3}$)"));
 const $reg_int			= (new RegExp("(^[0]$)|(^[1-9]{1}[0-9]+$)"));
-const $rplc_nm			= (new RegExp("[^a-zA-Zㄱ-ㅎ가-힣 ]$"));
-const $rplc_email		= (new RegExp("[^0-9a-zA-Z@._-]$"));
-const $rplc_id			= (new RegExp("[^0-9a-z]$"));
-const $rplc_paspt		= (new RegExp("[^0-9mMsSrRoOdD]$"));
-const $rplc_ip			= (new RegExp("[^0-9.]$"));
-const $rplc_ssn			= (new RegExp("[^0-9]$"));
-const $rplc_cph			= (new RegExp("[^0-9]$"));
-const $rplc_card		= (new RegExp("[^0-9-]$"));
-const $rplc_drvg		= (new RegExp("[^0-9-]$"));
-const $rplc_bizr		= (new RegExp("[^0-9-]$"));
-const $rplc_acct		= (new RegExp("[^0-9-]$"));
-const $rplc_pst			= (new RegExp("[^0-9-]$"));
-const $rplc_int			= (new RegExp("[^0-9]$"));
-const $rplc_fst_int		= (new RegExp("(^0+)"));
+const $reg_addr			= (new RegExp("^[0-9a-zA-Z가-힣#*)(_+=,.' -]+$"));
+const $rplc_nm			= (/[^a-zA-Zㄱ-ㅎ가-힣 ]/g);
+const $rplc_email		= (/[^0-9a-zA-Z@._-]/g);
+const $rplc_id			= (/[^0-9a-z]/g);
+const $rplc_paspt		= (/[^0-9mMsSrRoOdD]/g);
+const $rplc_ip			= (/[^0-9.]/g);
+const $rplc_ssn			= (/[^0-9]/g);
+const $rplc_cph			= (/[^0-9]/g);
+const $rplc_card		= (/[^0-9]/g);
+const $rplc_drvg		= (/[^0-9]/g);
+const $rplc_bizr		= (/[^0-9]/g);
+const $rplc_acct		= (/[^0-9-]/g);
+const $rplc_pst			= (/[^0-9-]/g);
+const $rplc_int			= (/[^0-9]/g);
+const $rplc_fst_int		= (/(^0+)/g);
+const $rplc_addr		= (/[^0-9a-zA-Zㄱ-ㅎ가-힣#*)(_+=,.' -]/g);
 const fmtUtil = {
 	fn_is_nm : function(v) {
 		return ($reg_nm.test(v));
@@ -65,47 +67,51 @@ const fmtUtil = {
 	fn_is_int : function(v) {
 		return ($reg_int.test(v));
 	},
-	fn_rplc_nm : function(o) {
-		$(o).val(($(o).val()).replace($rplc_nm, "").replace("  ", " "));
+	fn_is_addr : function(v) {
+		return ($reg_addr.test(v));
 	},
-	fn_rplc_email : function(o) {
-		$(o).val(($(o).val()).replace($rplc_email, "").replace("@@", "@").replace("..", "."));
+	fn_rplc_nm : function(v) {
+		return (v.replace($rplc_nm, "").replace("  ", " "));
 	},
-	fn_rplc_id : function(o) {
-		$(o).val(($(o).val()).replace($rplc_id, ""));
+	fn_rplc_email : function(v) {
+		return (v.replace($rplc_email, "").replace("@@", "@").replace("..", "."));
 	},
-	fn_rplc_paspt : function(o) {
-		$(o).val(($(o).val()).replace($rplc_paspt, ""));
+	fn_rplc_id : function(v) {
+		return (v.replace($rplc_id, ""));
 	},
-	fn_rplc_ip : function(o) {
-		$(o).val(($(o).val()).replace($rplc_ip, "").replace("..", "."));
+	fn_rplc_paspt : function(v) {
+		return (v.replace($rplc_paspt, ""));
 	},
-	fn_rplc_ssn : function(o) {
-		$(o).val(($(o).val()).replace($rplc_ssn, ""));
+	fn_rplc_ip : function(v) {
+		return (v.replace($rplc_ip, "").replace("..", "."));
 	},
-	fn_rplc_cph : function(o) {
-		$(o).val(($(o).val()).replace($rplc_cph, ""));
+	fn_rplc_ssn : function(v) {
+		return (v.replace($rplc_ssn, ""));
 	},
-	fn_rplc_card : function(o) {
-		$(o).val(($(o).val()).replace($rplc_card, "").replace("--", "-"));
+	fn_rplc_cph : function(v) {
+		return (v.replace($rplc_cph, ""));
 	},
-	fn_rplc_drvg : function(o) {
-		$(o).val(($(o).val()).replace($rplc_drvg, "").replace("--", "-"));
+	fn_rplc_card : function(v) {
+		return (v.replace($rplc_card, "").replace("--", "-"));
 	},
-	fn_rplc_bizr : function(o) {
-		$(o).val(($(o).val()).replace($rplc_bizr, "").replace("--", "-"));
+	fn_rplc_drvg : function(v) {
+		return (v.replace($rplc_drvg, "").replace("--", "-"));
 	},
-	fn_rplc_acct : function(o) {
-		$(o).val(($(o).val()).replace($rplc_acct, "").replace("--", "-"));
+	fn_rplc_bizr : function(v) {
+		return (v.replace($rplc_bizr, "").replace("--", "-"));
 	},
-	fn_rplc_pst : function(o) {
-		$(o).val(($(o).val()).replace($rplc_pst, "").replace("--", "-"));
+	fn_rplc_acct : function(v) {
+		return (v.replace($rplc_acct, "").replace("--", "-"));
 	},
-	fn_rplc_int : function(o) {
-		$(o).val(($(o).val()).replace($rplc_int, "").replace($rplc_fst_int, ""));
-		if ($(o).val() == "") {
-			$(o).val("0");
-		}
+	fn_rplc_pst : function(v) {
+		return (v.replace($rplc_pst, "").replace("--", "-"));
+	},
+	fn_rplc_int : function(v) {
+		v = (v.replace($rplc_int, "").replace($rplc_fst_int, ""));
+		return ((v == "") ? ("0") : (v));
+	},
+	fn_rplc_addr : function(v) {
+		return (v.replace($rplc_addr, "").replace("  ", " "));
 	},
 	fn_fmt : function(v, len, rplc) {
 		if ((v.length) > len) {
@@ -116,56 +122,119 @@ const fmtUtil = {
 		}
 		return (v.replace(((rplc) + (rplc)), rplc));
 	},
-	fn_fmt_ssn : function(o) {
-		fmtUtil.fn_rplc_ssn(o);
+	fn_fmt_ssn : function(v) {
+		v = (fmtUtil.fn_rplc_ssn(v));
+		v = (fmtUtil.fn_fmt(v, 6, "-"))
+		return (v);
+	},
+	fn_fmt_cph : function(v) {
+		v = (fmtUtil.fn_rplc_cph(v));
+		v = (fmtUtil.fn_fmt(v, 3, "-"));
+		v = (fmtUtil.fn_fmt(v, (3 + 1 + 4), "-"));
+		return (v);
+	},
+	fn_fmt_card : function(v) {
+		v = (fmtUtil.fn_rplc_card(v));
+		v = (fmtUtil.fn_fmt(v, 4, "-"));
+		v = (fmtUtil.fn_fmt(v, (4 + 1 + 4), "-"));
+		v = (fmtUtil.fn_fmt(v, (4 + 1 + 4 + 1 + 4), "-"));
+		return (v);
+	},
+	fn_fmt_drvg : function(v) {
+		v = (fmtUtil.fn_rplc_drvg(v));
+		v = (fmtUtil.fn_fmt(v, 2, "-"));
+		v = (fmtUtil.fn_fmt(v, (2 + 1 + 2), "-"));
+		v = (fmtUtil.fn_fmt(v, (2 + 1 + 2 + 1 + 6), "-"));
+		return (v);
+	},
+	fn_fmt_bizr : function(v) {
+		v = (fmtUtil.fn_rplc_bizr(v));
+		v = (fmtUtil.fn_fmt(v, 3, "-"));
+		v = (fmtUtil.fn_fmt(v, (3 + 1 + 2), "-"));
+		v = (fmtUtil.fn_fmt(v, (3 + 1 + 2 + 1 + 5), "-"));
+		return (v);
+	},
+	fn_fmt_int : function(v) {
+		v = (fmtUtil.fn_rplc_int(v));
+		v = (v.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+		return (v);
+	},
+	fn_input_nm : function(o) {
+		$(o).val(fmtUtil.fn_rplc_nm($(o).val()));
+	},
+	fn_input_email : function(o) {
+		$(o).val(fmtUtil.fn_rplc_email($(o).val()));
+	},
+	fn_input_id : function(o) {
+		$(o).val(fmtUtil.fn_rplc_id($(o).val()));
+	},
+	fn_input_paspt : function(o) {
+		$(o).val(fmtUtil.fn_rplc_paspt($(o).val()));
+	},
+	fn_input_ip : function(o) {
+		$(o).val(fmtUtil.fn_rplc_ip($(o).val()));
+	},
+	fn_input_ssn : function(o) {
+		$(o).val(fmtUtil.fn_rplc_ssn($(o).val()));
+	},
+	fn_input_cph : function(o) {
+		$(o).val(fmtUtil.fn_rplc_cph($(o).val()));
+	},
+	fn_input_card : function(o) {
+		$(o).val(fmtUtil.fn_rplc_card($(o).val()));
+	},
+	fn_input_drvg : function(o) {
+		$(o).val(fmtUtil.fn_rplc_drvg($(o).val()));
+	},
+	fn_input_bizr : function(o) {
+		$(o).val(fmtUtil.fn_rplc_bizr($(o).val()));
+	},
+	fn_input_acct : function(o) {
+		$(o).val(fmtUtil.fn_rplc_acct($(o).val()));
+	},
+	fn_input_pst : function(o) {
+		$(o).val(fmtUtil.fn_rplc_pst($(o).val()));
+	},
+	fn_input_int : function(o) {
+		$(o).val(fmtUtil.fn_rplc_int($(o).val()));
+	},
+	fn_input_addr : function(o) {
+		$(o).val(fmtUtil.fn_rplc_addr($(o).val()));
+	},
+	fn_input_fmt_ssn : function(o) {
 		if (!o.hasAttribute("maxlength") || $(o).attr("maxlength") != "14") {
 			$(o).attr("maxlength", "14");
 		}
-		var v = ($(o).val());
-		v = (fmtUtil.fn_fmt(v, 6, "-"));
-		$(o).val(v);
+		$(o).val(fmtUtil.fn_fmt_ssn($(o).val()));
 	},
-	fn_fmt_cph : function(o) {
-		fmtUtil.fn_rplc_ssn(o);
+	fn_input_fmt_cph : function(o) {
 		if (!o.hasAttribute("maxlength") || $(o).attr("maxlength") != "13") {
 			$(o).attr("maxlength", "13");
 		}
-		var v = ($(o).val());
-		v = (fmtUtil.fn_fmt(v, 3, "-"));
-		v = (fmtUtil.fn_fmt(v, 8, "-"));
-		$(o).val(v);
+		$(o).val(fmtUtil.fn_fmt_cph($(o).val()));
 	},
-	fn_fmt_card : function(o) {
-		fmtUtil.fn_rplc_card(o);
+	fn_input_fmt_card : function(o) {
 		if (!o.hasAttribute("maxlength") || $(o).attr("maxlength") != "19") {
 			$(o).attr("maxlength", "19");
 		}
-		var v = ($(o).val());
-		v = (fmtUtil.fn_fmt(v, 4, "-"));
-		v = (fmtUtil.fn_fmt(v, 9, "-"));
-		v = (fmtUtil.fn_fmt(v, 14, "-"));
-		$(o).val(v);
+		$(o).val(fmtUtil.fn_fmt_card($(o).val()));
 	},
-	fn_fmt_drvg : function(o) {
-		fmtUtil.fn_rplc_drvg(o);
+	fn_input_fmt_drvg : function(o) {
 		if (!o.hasAttribute("maxlength") || $(o).attr("maxlength") != "15") {
 			$(o).attr("maxlength", "15");
 		}
-		var v = ($(o).val());
-		v = (fmtUtil.fn_fmt(v, 2, "-"));
-		v = (fmtUtil.fn_fmt(v, 5, "-"));
-		v = (fmtUtil.fn_fmt(v, 12, "-"));
-		$(o).val(v);
+		$(o).val(fmtUtil.fn_fmt_drvg($(o).val()));
 	},
-	fn_fmt_bizr : function(o) {
-		fmtUtil.fn_rplc_bizr(o);
+	fn_input_fmt_bizr : function(o) {
 		if (!o.hasAttribute("maxlength") || $(o).attr("maxlength") != "12") {
 			$(o).attr("maxlength", "12");
 		}
-		var v = ($(o).val());
-		v = (fmtUtil.fn_fmt(v, 3, "-"));
-		v = (fmtUtil.fn_fmt(v, 6, "-"));
-		v = (fmtUtil.fn_fmt(v, 12, "-"));
-		$(o).val(v);
+		$(o).val(fmtUtil.fn_fmt_bizr($(o).val()));
+	},
+	fn_input_fmt_int : function(o) {
+		if (!o.hasAttribute("maxlength") || $(o).attr("maxlength") != "12") {
+			$(o).attr("maxlength", "12");
+		}
+		$(o).val(fmtUtil.fn_fmt_int($(o).val()));
 	}
 };

@@ -19,6 +19,10 @@ const vldUtil = {
 			alert((vldUtil.fn_et($(obj).attr("placeholder")) ? ("필수 값을 선택해주세요.") : ($(obj).attr("placeholder"))));
 			$(obj).focus();
 			return (false);
+		} else if (type == "validation") {
+			alert((vldUtil.fn_et($(obj).attr("msg")) ? ("필수 값을 확인해주세요.") : ($(obj).attr("msg"))));
+			$(obj).focus();
+			return (false);
 		}
 		return (true);
 	},
@@ -29,7 +33,16 @@ const vldUtil = {
 		var tgrt	= ((len > 1) ? (args[1]) : ("#"));
 		var f		= (true);
 		((len < 1) ? $("input[type=text]:required") : ($((tgrt) + (prnt)).find("input[type=text]:required"))).each(function() {
-			if (f) {f = (vldUtil.fn_alrt($(this), "text"));}
+			if (f) {
+				f = (vldUtil.fn_alrt($(this), "text"));
+				if (f && this.hasAttribute("vld")) {
+					var v = ($(this).val());
+					if (this.hasAttribute("rplc")) {
+						v = (v.replace($(this).attr("rplc"), ""));
+					}
+					f = (((new RegExp($(this).attr("vld"))).test(v)) ? (true) : (vldUtil.fn_alrt(this, "validation")));
+				}
+			}
 		});
 		((len < 1) ? $("input[type=radio]:checked") : ($((tgrt) + (prnt)).find("input[type=radio]:checked"))).each(function() {
 			if (f && $(this).prop("required")) {f = (vldUtil.fn_alrt($(this), "radio"));} else {return (false);}

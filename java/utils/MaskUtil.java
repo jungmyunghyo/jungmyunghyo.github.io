@@ -8,12 +8,14 @@ public class MaskUtil {
 	private static final String						_str_spc					= (" ");
 	private static final String						_str_dcml					= (".");
 	private static final String						_str_minus					= ("-");
+	private static final String						_str_slash					= ("/");
 	private static final String						_str_at						= ("@");
 	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
 	private static final String						_spl_blk					= ("");
 	private static final String						_spl_spc					= (" ");
 	private static final String						_spl_dcml					= ("\\.");
 	private static final String						_spl_minus					= ("-");
+	private static final String						_spl_slash					= ("/");
 	private static final String						_spl_at						= ("@");
 	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
 	private static final int						_sub_strt					= (0);
@@ -191,6 +193,32 @@ public class MaskUtil {
 		return (_str_null);
 	}
 	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
+	private static final String						_reg_mmyy					= ("(^[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12))]{2}[0-9]{2}$)|(^[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12))]{2}[/][0-9]{2}$)");
+	private static final Pattern					_ptrn_mmyy					= (Pattern.compile(_reg_mmyy));
+	private static final String						_rplc_mmyy					= ("[0-9]");
+	private static boolean ptrnMmyy(Object o) {
+		return (_ptrn_mmyy.matcher(String.valueOf(o)).matches());
+	}
+	public static String mmyy(Object o) {
+		if (ptrnMmyy(o)) {
+			String s = (o.toString());
+			StringBuffer sb = (new StringBuffer(s.length()));
+			boolean is = (s.indexOf(_str_slash) > _not_in);
+			String[] sA = (s.split((is) ? (_spl_slash) : (_spl_blk)));
+			int sz = (sA.length);
+			for (int a=0; a<sz; a++) {
+				if (is) {
+					sb.append((sb.isEmpty()) ? (_str_blk) : (_str_slash));
+					sb.append(sA[a].replaceAll(_rplc_mmyy, _str_mask_ptrn));
+				} else {
+					sb.append(sA[a].replaceAll(_rplc_mmyy, _str_mask_ptrn));
+				}
+			}
+			return (String.valueOf(sb));
+		}
+		return (_str_null);
+	}
+	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
 	private static final String						_alw_drvg_d					= ("((11)|(12)|(13)|(14)|(15)|(16)|(17)|(18)|(19)|(20)|(21)|(22)|(23)|(24)|(25)|(26)|(27)|(28))");
 	private static final String						_reg_drvg					= ("(^[" + (_alw_drvg_d) + "]{2}[-][0-9]{2}[-][0-9]{6}[-][0-9]{2}$)|(^[" + (_alw_drvg_d) + "]{2}[0-9]{2}[0-9]{6}[0-9]{2}$)");
 	private static final Pattern					_ptrn_drvg					= (Pattern.compile(_reg_drvg));
@@ -212,6 +240,26 @@ public class MaskUtil {
 				} else {
 					sb.append(((sz - 7) > a) ? (sA[a]) : (_str_mask_ptrn));
 				}
+			}
+			return (String.valueOf(sb));
+		}
+		return (_str_null);
+	}
+	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
+	private static final String						_reg_car					= ("^[0-9]{2}[가-힣][0-9]{4}$");
+	private static final Pattern					_ptrn_car					= (Pattern.compile(_reg_car));
+	private static final String						_rplc_car					= ("[0-9]");
+	private static boolean ptrnCar(Object o) {
+		return (_ptrn_car.matcher(String.valueOf(o)).matches());
+	}
+	public static String car(Object o) {
+		if (ptrnCar(o)) {
+			String s = (o.toString());
+			StringBuffer sb = (new StringBuffer(s.length()));
+			String[] sA = (s.split(_spl_blk));
+			int sz = (sA.length);
+			for (int a=0; a<sz; a++) {
+				sb.append((a < 3) ? (sA[a]) : (sA[a].replaceAll(_rplc_car, _str_mask_ptrn)));
 			}
 			return (String.valueOf(sb));
 		}

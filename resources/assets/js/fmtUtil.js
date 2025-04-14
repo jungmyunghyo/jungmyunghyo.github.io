@@ -6,7 +6,9 @@ const $vld_ip				= ("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}$");
 const $vld_ssn				= ("(^[0-9]{2}[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12))]{2}[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12)|(13)|(14)|(15)|(16)|(17)|(18)|(19)|(20)|(21)|(22)|(23)|(24)|(25)|(26)|(27)|(28)|(29)|(30)|(31))]{2}[-][1-4]{1}[0-9]{6}$)|(^[0-9]{2}[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12))]{2}[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12)|(13)|(14)|(15)|(16)|(17)|(18)|(19)|(20)|(21)|(22)|(23)|(24)|(25)|(26)|(27)|(28)|(29)|(30)|(31))]{2}[1-4]{1}[0-9]{6}$)");
 const $vld_cph				= ("(^[((010)|(017)|(019))]{3}[-][0-9]{4}[-][0-9]{4}$)|(^[((010)|(017)|(019))]{3}[0-9]{8}$)");
 const $vld_card				= ("(^[0-9]{3,4}[-][0-9]{3,4}[-][0-9]{3,4}[-][0-9]{3,4}$)|(^[0-9]{16}$)");
+const $vld_mmyy				= ("(^[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12))]{2}[0-9]{2}$)|(^[((01)|(02)|(03)|(04)|(05)|(06)|(07)|(08)|(09)|(10)|(11)|(12))]{2}[/][0-9]{2}$)");
 const $vld_drvg				= ("(^[((11)|(12)|(13)|(14)|(15)|(16)|(17)|(18)|(19)|(20)|(21)|(22)|(23)|(24)|(25)|(26)|(27)|(28))]{2}[-][0-9]{2}[-][0-9]{6}[-][0-9]{2}$)|(^[((11)|(12)|(13)|(14)|(15)|(16)|(17)|(18)|(19)|(20)|(21)|(22)|(23)|(24)|(25)|(26)|(27)|(28))]{2}[0-9]{2}[0-9]{6}[0-9]{2}$)");
+const $vld_car				= ("^[0-9]{2}[가-힣][0-9]{4}$");
 const $vld_bizr				= ("(^[1-9]{1}[0-9]{2}[0-9]{2}[0-9]{5}$)|(^[1-9]{1}[0-9]{2}[-][0-9]{2}[-][0-9]{5}$)");
 const $vld_acct				= ("(^[0-9-]{7,19}[0-9]$)|(^[0-9]{8,20}$)");
 const $vld_pst				= ("(^[0-9]{5}$)|(^[0-9]{3}[-][0-9]{3}$)");
@@ -21,7 +23,9 @@ const $rplc_ip				= (/[^0-9.]/g);
 const $rplc_ssn				= (/[^0-9]/g);
 const $rplc_cph				= (/[^0-9]/g);
 const $rplc_card			= (/[^0-9]/g);
+const $rplc_mmyy			= (/[^0-9]/g);
 const $rplc_drvg			= (/[^0-9]/g);
+const $rplc_car				= (/[^0-9ㄱ-ㅎ가-힣]/g);
 const $rplc_bizr			= (/[^0-9]/g);
 const $rplc_acct			= (/[^0-9-]/g);
 const $rplc_pst				= (/[^0-9-]/g);
@@ -68,15 +72,25 @@ const fmtUtil = {
 	fn_input_card			: function(o) {$(o).val(fmtUtil.fn_rplc_card($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "16"));		(fmtUtil.fn_vld(o, $vld_card));			(fmtUtil.fn_rplc(o, $rplc_card));},
 	fn_input_fmt_card		: function(o) {$(o).val(fmtUtil.fn_fmt_card($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "19"));		(fmtUtil.fn_vld(o, $vld_card));			(fmtUtil.fn_rplc(o, $rplc_card));			(fmtUtil.fn_msg(o, "xxxx-nnnn-xxxx-nnnn 형태로 입력해 주세요."));},
 	
+	fn_vld_mmyy				: function(v) {return ((new RegExp($vld_mmyy)).test(v));},
+	fn_rplc_mmyy			: function(v) {return (v.replace($rplc_mmyy, ""));},
+	fn_fmt_mmyy				: function(v) {return (fmtUtil.fn_fmt((fmtUtil.fn_rplc_mmyy(v)), 2, "/"));},
+	fn_input_mmyy			: function(o) {$(o).val(fmtUtil.fn_rplc_mmyy($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "4"));		(fmtUtil.fn_vld(o, $vld_mmyy));			(fmtUtil.fn_rplc(o, $rplc_mmyy));},
+	fn_input_fmt_mmyy		: function(o) {$(o).val(fmtUtil.fn_fmt_mmyy($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "5"));		(fmtUtil.fn_vld(o, $vld_mmyy));			(fmtUtil.fn_rplc(o, $rplc_mmyy));		(fmtUtil.fn_msg(o, "mm/yy 형태로 입력해 주세요."));},
+	
 	fn_vld_drvg				: function(v) {return ((new RegExp($vld_drvg)).test(v));},
 	fn_rplc_drvg			: function(v) {return (v.replace($rplc_drvg, "").replace(/[\-][\-]/g, "-"));},
 	fn_fmt_drvg				: function(v) {return (fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_drvg(v), 2, "-"), (5), "-"), (12), "-"));},
 	fn_input_drvg			: function(o) {$(o).val(fmtUtil.fn_rplc_drvg($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "12"));		(fmtUtil.fn_vld(o, $vld_drvg));			(fmtUtil.fn_rplc(o, $rplc_drvg));},
 	fn_input_fmt_drvg		: function(o) {$(o).val(fmtUtil.fn_fmt_drvg($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "15"));		(fmtUtil.fn_vld(o, $vld_drvg));			(fmtUtil.fn_rplc(o, $rplc_drvg));			(fmtUtil.fn_msg(o, "xx-nn-xxxxxx-nn 형태로 입력해 주세요."));},
 	
+	fn_vld_car				: function(v) {return ((new RegExp($vld_car)).test(v));},
+	fn_rplc_car				: function(v) {return (v.replace($rplc_car, ""));},
+	fn_input_car			: function(o) {$(o).val(fmtUtil.fn_rplc_car($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "7"));		(fmtUtil.fn_vld(o, $vld_car));			(fmtUtil.fn_rplc(o, $rplc_car));},
+	
 	fn_vld_bizr				: function(v) {return ((new RegExp($vld_bizr)).test(v));},
 	fn_rplc_bizr			: function(v) {return (v.replace($rplc_bizr, "").replace(/[\-][\-]/g, "-"));},
-	fn_fmt_bizr				: function(v) {return (fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_bizr(v), 3, "-"), (6), "-"), (12), "-"));},
+	fn_fmt_bizr				: function(v) {return (mtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_bizr(v), 3, "-"), (6), "-"));},
 	fn_input_bizr			: function(o) {$(o).val(fmtUtil.fn_rplc_bizr($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "10"));		(fmtUtil.fn_vld(o, $vld_bizr));			(fmtUtil.fn_rplc(o, $rplc_bizr));},
 	fn_input_fmt_bizr		: function(o) {$(o).val(fmtUtil.fn_fmt_bizr($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "12"));		(fmtUtil.fn_vld(o, $vld_bizr));			(fmtUtil.fn_rplc(o, $rplc_bizr));			(fmtUtil.fn_msg(o, "xxx-nn-xxxxx 형태로 입력해 주세요."));},
 	

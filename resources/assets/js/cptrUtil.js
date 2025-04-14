@@ -10,15 +10,15 @@ const cptrUtil = {
 				ignoreElements		: true,
 				logging				: false
 			}).then(canvas => {
-				var link		= (document.createElement("a"));
 				var href		= (canvas.toDataURL("image/png"));
 				var ext			= (".png");
 				var ttl			= ((nm) + ("_") + (($dt_yyyy) + ($dt_mm) + ($dt_dd)) + ("_") + (($dt_hh) + ($dt_ii) + ($dt_ss)) + (ext));
-				link.href		= (href);
-				link.download	= (ttl);
 				try {
 					window.flutter_inappwebview.callHandler("saveImageHandler", ({"href":href,"ttl":ttl,"ext":ext}));
 				} catch (e) {
+					var link		= (document.createElement("a"));
+					link.href		= (href);
+					link.download	= (ttl);
 					link.click();
 				}
 			});

@@ -110,7 +110,7 @@ let kakaoMapUtil = {
 		setTimeout(() => kakaoMapUtil._map.relayout(), 100);
 	},
 	fn_lat_lot			: function(lat, lot) {
-		return (new kakao.maps.LatLng(((vldUtil.fn_et(lat)) ? (kakaoMapUtil._cntr_lat) : (lat)), ((vldUtil.fn_et(lot)) ? (kakaoMapUtil._cntr_lot) : (lot))));
+		return (new kakao.maps.LatLng(((lat == null || lat == "" || lat == undefined) ? (kakaoMapUtil._cntr_lat) : (lat)), ((lot == null || lot == "" || lot == undefined) ? (kakaoMapUtil._cntr_lot) : (lot))));
 	},
 	fn_move				: function(lv, latLot) {
 		kakaoMapUtil._map.jump(latLot, lv);

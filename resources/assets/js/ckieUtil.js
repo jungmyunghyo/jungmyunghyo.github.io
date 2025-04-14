@@ -1,7 +1,7 @@
 const ckieUtil = {
 	fn_set_s : function(k, v, s) {
 		try {
-			var dt = ($dt);
+			var dt = (new Date());
 			dt.setTime((dt.getTime()) + (s * 1000));
 			document.cookie = ((encodeURIComponent(k)) + ("=") + (encodeURIComponent(v)) + ("; expires=") + (dt.toUTCString()) + ("; path=/"));
 		} catch (e) {
@@ -26,7 +26,7 @@ const ckieUtil = {
 	},
 	fn_del : function(k) {
 		try {
-			var dt = ($dt);
+			var dt = (new Date());
 			dt.setTime((dt.getTime()) - (10 * 1000));
 			document.cookie = ((encodeURIComponent(k)) + ("=") + (null) + ("; expires=") + (dt.toUTCString()) + ("; path=/"));
 		} catch (e) {

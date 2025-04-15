@@ -90,7 +90,7 @@ const fmtUtil = {
 	
 	fn_vld_bizr				: function(v) {return ((new RegExp($vld_bizr)).test(v));},
 	fn_rplc_bizr			: function(v) {return (v.replace($rplc_bizr, "").replace(/[\-][\-]/g, "-"));},
-	fn_fmt_bizr				: function(v) {return (mtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_bizr(v), 3, "-"), (6), "-"));},
+	fn_fmt_bizr				: function(v) {return (fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_bizr(v), 3, "-"), (6), "-"));},
 	fn_input_bizr			: function(o) {$(o).val(fmtUtil.fn_rplc_bizr($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "10"));		(fmtUtil.fn_vld(o, $vld_bizr));			(fmtUtil.fn_rplc(o, $rplc_bizr));},
 	fn_input_fmt_bizr		: function(o) {$(o).val(fmtUtil.fn_fmt_bizr($(o).val()));			(fmtUtil.fn_req(o));		(fmtUtil.fn_max(o, "12"));		(fmtUtil.fn_vld(o, $vld_bizr));			(fmtUtil.fn_rplc(o, $rplc_bizr));			(fmtUtil.fn_msg(o, "xxx-nn-xxxxx 형태로 입력해 주세요."));},
 	
@@ -129,5 +129,58 @@ const fmtUtil = {
 	fn_max					: function(o, max) {((!o.hasAttribute("maxlength") || $(o).prop("maxlength") != max) ? ($(o).prop("maxlength", max)) : (""));},
 	fn_vld					: function(o, vld) {((!o.hasAttribute("vld") || $(o).prop("vld") != vld) ? ($(o).attr("vld", vld)) : (""));},
 	fn_rplc					: function(o, rplc) {((!o.hasAttribute("rplc") || $(o).attr("rplc") != rplc) ? ($(o).attr("rplc", rplc)) : (""));},
-	fn_msg					: function(o, msg) {((!o.hasAttribute("msg") || $(o).attr("msg") != msg) ? ($(o).attr("msg", msg)) : (""));}
+	fn_msg					: function(o, msg) {((!o.hasAttribute("msg") || $(o).attr("msg") != msg) ? ($(o).attr("msg", msg)) : (""));},
+	fn_reset				: function() {
+		$("input[type=text].input_is_nm"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_nm(this));});
+		$("input[type=text].input_is_email"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_email(this));});
+		$("input[type=text].input_is_id"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_id(this));});
+		$("input[type=text].input_is_paspt"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_paspt(this));});
+		$("input[type=text].input_is_ip"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_ip(this));});
+		$("input[type=text].input_is_ssn"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_ssn(this));});
+		$("input[type=text].input_is_cph"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_cph(this));});
+		$("input[type=text].input_is_card"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_card(this));});
+		$("input[type=text].input_is_mmyy"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_mmyy(this));});
+		$("input[type=text].input_is_drvg"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_drvg(this));});
+		$("input[type=text].input_is_car"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_car(this));});
+		$("input[type=text].input_is_bizr"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_bizr(this));});
+		$("input[type=text].input_is_acct"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_acct(this));});
+		$("input[type=text].input_is_pst"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_pst(this));});
+		$("input[type=text].input_is_int"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_int(this));});
+		$("input[type=text].input_is_addr"		).each(function() {$(this).prop("oninput", fmtUtil.fn_input_addr(this));});
+		$("input[type=text].input_is_addr_dtl"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_addr_dtl(this));});
+		$("input[type=text].input_is_fmt_ssn"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_ssn(this));});
+		$("input[type=text].input_is_fmt_cph"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_cph(this));});
+		$("input[type=text].input_is_fmt_card"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_card(this));});
+		$("input[type=text].input_is_fmt_mmyy"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_mmyy(this));});
+		$("input[type=text].input_is_fmt_drvg"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_drvg(this));});
+		$("input[type=text].input_is_fmt_bizr"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_bizr(this));});
+		$("input[type=text].input_is_fmt_int"	).each(function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_int(this));});
+		$("input[type=text].input_is_nm"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_nm(this));});
+		$("input[type=text].input_is_email"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_email(this));});
+		$("input[type=text].input_is_id"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_id(this));});
+		$("input[type=text].input_is_paspt"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_paspt(this));});
+		$("input[type=text].input_is_ip"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_ip(this));});
+		$("input[type=text].input_is_ssn"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_ssn(this));});
+		$("input[type=text].input_is_cph"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_cph(this));});
+		$("input[type=text].input_is_card"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_card(this));});
+		$("input[type=text].input_is_mmyy"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_mmyy(this));});
+		$("input[type=text].input_is_drvg"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_drvg(this));});
+		$("input[type=text].input_is_car"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_car(this));});
+		$("input[type=text].input_is_bizr"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_bizr(this));});
+		$("input[type=text].input_is_acct"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_acct(this));});
+		$("input[type=text].input_is_pst"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_pst(this));});
+		$("input[type=text].input_is_int"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_int(this));});
+		$("input[type=text].input_is_addr"		).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_addr(this));});
+		$("input[type=text].input_is_addr_dtl"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_addr_dtl(this));});
+		$("input[type=text].input_is_fmt_ssn"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_ssn(this));});
+		$("input[type=text].input_is_fmt_cph"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_cph(this));});
+		$("input[type=text].input_is_fmt_card"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_card(this));});
+		$("input[type=text].input_is_fmt_mmyy"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_mmyy(this));});
+		$("input[type=text].input_is_fmt_drvg"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_drvg(this));});
+		$("input[type=text].input_is_fmt_bizr"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_bizr(this));});
+		$("input[type=text].input_is_fmt_int"	).on("input", function() {$(this).prop("oninput", fmtUtil.fn_input_fmt_int(this));});
+	}
 };
+$(document).ready(function() {
+	fmtUtil.fn_reset();
+});

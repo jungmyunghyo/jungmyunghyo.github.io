@@ -1,4 +1,8 @@
 /*
+https://apis.map.kakao.com/web/sample
+https://apis.map.kakao.com/web/documentation
+*/
+/*
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=aaaaaaaaaa&libraries=services,clusterer"></script>
 */
 let kakaoMapUtil = {

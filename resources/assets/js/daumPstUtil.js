@@ -1,4 +1,7 @@
 /*
+https://postcode.map.daum.net/guide
+*/
+/*
 <script type="text/javascript" src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 */
 const daumPstUtil = {

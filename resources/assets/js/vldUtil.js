@@ -32,16 +32,14 @@ const vldUtil = {
 		var prnt	= ((len > 0) ? (args[0]) : (null));
 		var tgrt	= ((len > 1) ? (args[1]) : ("#"));
 		var f		= (true);
-		((len < 1) ? $("input[type=text]:required") : ($((tgrt) + (prnt)).find("input[type=text]:required"))).each(function() {
-			if (f) {
-				f = (vldUtil.fn_alrt($(this), "text"));
-				if (f && this.hasAttribute("vld")) {
-					var v = ($(this).val());
-					if (this.hasAttribute("rplc")) {
-						v = (v.replace($(this).attr("rplc"), ""));
-					}
-					f = (((new RegExp($(this).attr("vld"))).test(v)) ? (true) : (vldUtil.fn_alrt(this, "validation")));
+		((len < 1) ? $("input[type=text]") : ($((tgrt) + (prnt)).find("input[type=text]"))).each(function() {
+			if (f && this.hasAttribute("required")) {f = (vldUtil.fn_alrt($(this), "text"));}
+			if (f && this.hasAttribute("vld")) {
+				var v = ($(this).val());
+				if (this.hasAttribute("rplc")) {
+					v = (v.replace($(this).attr("rplc"), ""));
 				}
+				f = (((new RegExp($(this).attr("vld"))).test(v)) ? (true) : (vldUtil.fn_alrt(this, "validation")));
 			}
 		});
 		((len < 1) ? $("input[type=radio]:checked") : ($((tgrt) + (prnt)).find("input[type=radio]:checked"))).each(function() {
@@ -154,5 +152,17 @@ const vldUtil = {
 			form.appendChild(fld);
 		});
 		return (form);
+	},
+	fn_next : function() {
+		var args	= (vldUtil.fn_next.arguments);
+		var len		= (args.length);
+		var prnt	= ((len > 0) ? (args[0]) : (null));
+		var tgrt	= ((len > 1) ? (args[1]) : ("#"));
+		var lst		= (((len < 1) ? $("input[type=text]") : ($((tgrt) + (prnt)).find("input[type=text]"))).length);
+		((len < 1) ? $("input[type=text]") : ($((tgrt) + (prnt)).find("input[type=text]"))).each(function(i) {
+			$(this).on("keypress", function(e) {
+				((e.keyCode == "13") ? (($(this).val() == null || $(this).val() == "" || $(this).val() == undefined) ? ("") : (((i + 1) == lst) ? ("") : (((len < 1) ? ($("input[type=text]")[(i + 1)]) : ($((tgrt) + (prnt)).find("input[type=text]")[(i + 1)])).focus()))) : (""));
+			});
+		});
 	}
 };

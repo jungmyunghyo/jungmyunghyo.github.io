@@ -110,16 +110,6 @@ public class MaskUtil {
 		return (_str_null);
 	}
 	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
-	private static final String						_rplc_addr					= ("[0-9]");
-	public static String addr(Object o) {
-		return ((o != null) ? (o.toString().replaceAll(_rplc_addr, _str_mask_ptrn)) : (_str_null));
-	}
-	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
-	private static final String						_rplc_addr_dtl				= ("[0-9]");
-	public static String addrDtl(Object o) {
-		return ((o != null) ? (o.toString().replaceAll(_rplc_addr_dtl, _str_mask_ptrn)) : (_str_null));
-	}
-	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
 	private static final int						_loc_ci						= (6);
 	private static final String						_rplc_ci					= ("(?<=[^*]{" + (_loc_ci) + "}[^*]+)[^*]");
 	public static String ci(Object o) {
@@ -327,6 +317,16 @@ public class MaskUtil {
 	}
 	public static String pst(Object o) {
 		return ((ptrnPst(o)) ? (o.toString().replaceAll(_rplc_pst, _str_mask_ptrn)) : (_str_null));
+	}
+	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
+	private static final String						_rplc_addr					= ("[0-9]");
+	public static String addr(Object o) {
+		return ((o != null) ? (o.toString().replaceAll(_rplc_addr, _str_mask_ptrn)) : (_str_null));
+	}
+	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
+	private static final String						_rplc_addr_dtl				= ("[0-9]");
+	public static String addrDtl(Object o) {
+		return ((o != null) ? (o.toString().replaceAll(_rplc_addr_dtl, _str_mask_ptrn)) : (_str_null));
 	}
 	/** --------------------------------------------------------------------------------------------------------------------------------------------------------------- **/
 	public static String txt(Object o) {

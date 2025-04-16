@@ -1,49 +1,35 @@
 const ckieUtil = {
-	fn_set_s : function(k, v, s) {
-		try {
-			var dt = (new Date());
-			dt.setTime((dt.getTime()) + (s * 1000));
-			document.cookie = ((encodeURIComponent(k)) + ("=") + (encodeURIComponent(v)) + ("; expires=") + (dt.toUTCString()) + ("; path=/"));
-		} catch (e) {
-		}
-	},
-	fn_set_i : function(k, v, i) {
-		ckieUtil.fn_set_s(k, v, (i * 60));
-	},
-	fn_set_h : function(k, v, h) {
-		ckieUtil.fn_set_i(k, v, (h * 60));
-	},
-	fn_set_d : function(k, v, d) {
-		ckieUtil.fn_set_h(k, v, (d * 24));
+	fn_set : function() {
+		var args	= (ckieUtil.fn_set.arguments);
+		var len		= (args.length);
+		var k		= (args[0]);
+		var v		= (args[1]);
+		var dt		= (new Date());
+		((len > 2 && args[2] > 0) ? (dt.setFullYear(	dt.getFullYear()	+ args[2])) : (""));
+		((len > 3 && args[3] > 0) ? (dt.setMonth(		dt.getMonth()		+ args[3])) : (""));
+		((len > 4 && args[4] > 0) ? (dt.setDate(		dt.getDate()		+ args[4])) : (""));
+		((len > 5 && args[5] > 0) ? (dt.setHours(		dt.getHours()		+ args[5])) : (""));
+		((len > 6 && args[6] > 0) ? (dt.setMinutes(		dt.getMinutes()		+ args[6])) : (""));
+		((len > 7 && args[7] > 0) ? (dt.setSeconds(		dt.getSeconds()		+ args[7])) : (""));
+		document.cookie = ((encodeURIComponent(k)) + ("=") + (encodeURIComponent(v)) + ("; expires=") + (dt.toUTCString()) + ("; path=/"));
 	},
 	fn_get : function(k) {
 		try {
 			var v = (document.cookie.match(("(^|;) ?") + (k) + ("=([^;]*)(;|$)")));
-			return ((v) ? (v[2]) : (null));
+			return ((v == null || v == "" || v == undefined) ? (null) : ((v.length > 2) ? (v[2]) : (null)));
 		} catch (e) {
 			return (null);
 		}
 	},
 	fn_del : function(k) {
-		try {
-			var dt = (new Date());
-			dt.setTime((dt.getTime()) - (10 * 1000));
-			document.cookie = ((encodeURIComponent(k)) + ("=") + (null) + ("; expires=") + (dt.toUTCString()) + ("; path=/"));
-		} catch (e) {
-		}
+		document.cookie = ((encodeURIComponent(k)) + ("=") + (null) + ("; expires=") + ((new Date()).toUTCString()) + ("; path=/"));
 	},
 	fn_call : function(k, fn) {
-		try {
-			if (ckieUtil.fn_get(k) == null) {
-				return (fn());
-			}
-		} catch (e) {
+		if (ckieUtil.fn_get(k) == null) {
+			return (fn());
 		}
 	},
 	fn_prs : function(k, fn) {
-		try {
-			return (fn(ckieUtil.fn_get(k)));
-		} catch (e) {
-		}
+		return (fn(ckieUtil.fn_get(k)));
 	}
 };

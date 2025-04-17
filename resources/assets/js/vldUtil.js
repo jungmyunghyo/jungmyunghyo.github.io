@@ -34,13 +34,7 @@ const vldUtil = {
 		var f		= (true);
 		((len < 1) ? $("input[type=text]") : ($((tgrt) + (prnt)).find("input[type=text]"))).each(function() {
 			if (f && this.hasAttribute("required")) {f = (vldUtil.fn_alrt($(this), "text"));}
-			if (f && this.hasAttribute("vld")) {
-				var v = ($(this).val());
-				if (this.hasAttribute("rplc")) {
-					v = (v.replace($(this).attr("rplc"), ""));
-				}
-				f = (((new RegExp($(this).attr("vld"))).test(v)) ? (true) : (vldUtil.fn_alrt(this, "validation")));
-			}
+			if (f && this.hasAttribute("vld")) {f = (((new RegExp($(this).attr("vld"))).test((this.hasAttribute("rplc")) ? ($(this).val().replace($(this).attr("rplc"), "")) : ($(this).val()))) ? (true) : (vldUtil.fn_alrt(this, "validation")));}
 		});
 		((len < 1) ? $("input[type=radio]:checked") : ($((tgrt) + (prnt)).find("input[type=radio]:checked"))).each(function() {
 			if (f && $(this).prop("required")) {f = (vldUtil.fn_alrt($(this), "radio"));} else {return (false);}
@@ -164,5 +158,43 @@ const vldUtil = {
 				((e.keyCode == "13") ? (($(this).val() == null || $(this).val() == "" || $(this).val() == undefined) ? ("") : (((i + 1) == lst) ? ("") : (((len < 1) ? ($("input[type=text]")[(i + 1)]) : ($((tgrt) + (prnt)).find("input[type=text]")[(i + 1)])).focus()))) : (""));
 			});
 		});
+	},
+	fn_chk : function(mtr, cls) {
+		$("input[type=checkbox]." + (mtr)).each(			function() {$(this).prop("onchange", $("." + (cls)).prop("checked", $(this).prop("checked")));});
+		$("input[type=checkbox]." + (cls)).each(			function() {$(this).prop("onchange", ($("input[type=checkbox]." + (mtr)).prop("checked", ($("input[type=checkbox]." + (cls)).length == $("input[type=checkbox]." + (cls) + ":checked").length))));});
+		$("input[type=checkbox]." + (mtr)).on("change",	function() {$(this).prop("onchange", $("." + (cls)).prop("checked", $(this).prop("checked")));});
+		$("input[type=checkbox]." + (cls)).on("change",	function() {$(this).prop("onchange", ($("input[type=checkbox]." + (mtr)).prop("checked", ($("input[type=checkbox]." + (cls)).length == $("input[type=checkbox]." + (cls) + ":checked").length))));});
+	},
+	fn_add : function() {
+		var args	= (vldUtil.fn_add.arguments);
+		var len		= (args.length);
+		var tp		= (args[0]);
+		var nm		= (args[1]);
+		var data	= (args[2]);
+		var bf		= ((len > 4) ? (args[3]) : (""));
+		var af		= ((len > 4) ? (args[4]) : (""));
+		var html	= ("");
+		((typeof data == "string") ? $(data.split(",")) : $(data)).each(function(i) {
+			var k = ((vldUtil.fn_et(this.tp)) ? (this) : (this.tp));
+			var v = ((vldUtil.fn_et(this.cd)) ? (this) : (this.cd));
+			if (tp == "radio") {
+				html += (bf);
+				html += (("<input type='radio' name='" + (nm) + "' value='" + (v) + "' " + ((i == 0) ? ("checked") : ("")) + "/>") + (k));
+				html += (af);
+			} else if (tp == "checkbox") {
+				html += (bf);
+				html += (("<input type='checkbox' name='" + (nm) + "' value='" + (v) + "'/>") + (k));
+				html += (af);
+			} else if (tp == "checkboxall") {
+				html += (bf);
+				html += (("<input type='checkbox' name='" + (nm) + "' value='" + (v) + "' checked/>") + (k));
+				html += (af);
+			} else if (tp == "selectbox") {
+				html += ((i == 0) ? ("<select name='" + (nm) + "'>") : (""));
+				html += ("<option value='" + (v) + "'>" + (k) + "</option>");
+				html += (((i + 1) == (((typeof data == "string") ? $(data.split(",")) : $(data)).length)) ? ("</select>") : (""));
+			}
+		});
+		return (html);
 	}
 };

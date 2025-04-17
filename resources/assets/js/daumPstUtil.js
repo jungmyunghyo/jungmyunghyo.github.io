@@ -10,14 +10,11 @@ const daumPstUtil = {
 		var len		= (args.length);
 		var id		= (args[0]);
 		var fn		= (args[1]);
-		var h		= ((len > 2) ? (args[2]) : (window.innerHeight));
-		var w		= ((len > 3) ? (args[3]) : (window.innerWidth));
-		var z		= ((len > 4) ? (args[4]) : ("0"));
 		$("#" + (id)).empty();
-		$("#" + (id)).css("height", h);
-		$("#" + (id)).css("width", w);
-		$("#" + (id)).css("z-index", z);
-		var html = (document.getElementById(id));
+		$("#" + (id)).css("height", ((len > 2) ? (args[2]) : (window.innerHeight)));
+		$("#" + (id)).css("width", ((len > 3) ? (args[3]) : (window.innerWidth)));
+		$("#" + (id)).css("z-index", ((len > 4) ? (args[4]) : ("0")));
+		var html	= (document.getElementById(id));
 		daum.postcode.load(function() {
 			(new daum.Postcode({
 				oncomplete			: function(rst) {fn(rst);},

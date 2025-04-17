@@ -14,12 +14,8 @@ const ckieUtil = {
 		document.cookie = ((encodeURIComponent(k)) + ("=") + (encodeURIComponent(v)) + ("; expires=") + (dt.toUTCString()) + ("; path=/"));
 	},
 	fn_get : function(k) {
-		try {
-			var v = (document.cookie.match(("(^|;) ?") + (k) + ("=([^;]*)(;|$)")));
-			return ((v == null || v == "" || v == undefined) ? (null) : ((v.length > 2) ? (v[2]) : (null)));
-		} catch (e) {
-			return (null);
-		}
+		var v = (document.cookie.match(("(^|;) ?") + (k) + ("=([^;]*)(;|$)")));
+		return ((v == null || v == "" || v == undefined) ? (null) : ((v.length > 2) ? (v[2]) : (null)));
 	},
 	fn_del : function(k) {
 		document.cookie = ((encodeURIComponent(k)) + ("=") + (null) + ("; expires=") + ((new Date()).toUTCString()) + ("; path=/"));

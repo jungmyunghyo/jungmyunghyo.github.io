@@ -204,10 +204,10 @@ const dtCalUtil = {
 		var eId		= ((len > 3) ? (args[3]) : (null));
 		if (len > 3) {
 			$(dtCalUtil.fn_get(sId, sAdd, eAdd)).datepicker("setDate", (sAdd)).on("change", function() {
-				$("#" + (eId)).datepicker("option", "minDate", (dtCalUtil.fn_prs(this)));
+				$(eId).datepicker("option", "minDate", (dtCalUtil.fn_prs(this)));
 			});
 			$(dtCalUtil.fn_get(eId, sAdd, eAdd)).datepicker("setDate", (eAdd)).on("change", function() {
-				$("#" + (sId)).datepicker("option", "maxDate", (dtCalUtil.fn_prs(this)));
+				$(sId).datepicker("option", "maxDate", (dtCalUtil.fn_prs(this)));
 			});
 		} else {
 			dtCalUtil.fn_get(sId, sAdd, eAdd);
@@ -215,7 +215,7 @@ const dtCalUtil = {
 	},
 	fn_get			: function(id, sAdd, eAdd) {
 		return (
-			$("#" + (id)).datepicker({
+			$(id).datepicker({
 				buttonImage			: (dtCalUtil._img),
 				buttonImageOnly		: (true),
 				buttonText			: (null),

@@ -8,13 +8,14 @@ const daumPstUtil = {
 	fn_get : function() {
 		var args	= (daumPstUtil.fn_get.arguments);
 		var len		= (args.length);
-		var id		= (args[0]);
+		var trgt	= (args[0]);
 		var fn		= (args[1]);
-		$("#" + (id)).empty();
-		$("#" + (id)).css("height", ((len > 2) ? (args[2]) : (window.innerHeight)));
-		$("#" + (id)).css("width", ((len > 3) ? (args[3]) : (window.innerWidth)));
-		$("#" + (id)).css("z-index", ((len > 4) ? (args[4]) : ("0")));
-		var html	= (document.getElementById(id));
+		var bf		= ((!!$("#" + (trgt)).length) ? ("#" + (trgt)) : ("." + (trgt)));
+		$(bf).empty();
+		$(bf).css("height",		((len > 2) ? (args[2]) : (window.innerHeight)));
+		$(bf).css("width",		((len > 3) ? (args[3]) : (window.innerWidth)));
+		$(bf).css("z-index",	((len > 4) ? (args[4]) : ("0")));
+		var html	= ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : ((document.getElementsByClassName(trgt) != null) ? (document.getElementsByClassName(trgt)[0]) : (document.querySelector("body"))));
 		daum.postcode.load(function() {
 			(new daum.Postcode({
 				oncomplete			: function(rst) {fn(rst);},

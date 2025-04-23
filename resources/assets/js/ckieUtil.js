@@ -1,4 +1,7 @@
 const ckieUtil = {
+	fn_et : function(v) {
+		return ((v == null || v == undefined) || (typeof v == "string" && !v.trim().length) || ((typeof v == "object") && ((Array.isArray(v) && !v.length) || (!Object.keys(v).length))) || (typeof v == "boolean" && !v));
+	},
 	fn_set : function() {
 		var args	= (ckieUtil.fn_set.arguments);
 		var len		= (args.length);
@@ -13,19 +16,15 @@ const ckieUtil = {
 		((len > 7 && args[7] > 0) ? (dt.setSeconds(		dt.getSeconds()		+ args[7])) : (""));
 		document.cookie = ((encodeURIComponent(k)) + ("=") + (encodeURIComponent(v)) + ("; expires=") + (dt.toUTCString()) + ("; path=/"));
 	},
-	fn_get : function(k) {
-		var v = (document.cookie.match(("(^|;) ?") + (k) + ("=([^;]*)(;|$)")));
-		return ((v == null || v == "" || v == undefined) ? (null) : ((v.length > 2) ? (v[2]) : (null)));
+	fn_get : function() {
+		var args	= (ckieUtil.fn_get.arguments);
+		var len		= (args.length);
+		var k		= (args[0]);
+		var fn		= ((len > 1) ? (args[1]) : (null));
+		var v		= (document.cookie.match(("(^|;) ?") + (k) + ("=([^;]*)(;|$)")));
+		return ((len > 1) ? (fn((!ckieUtil.fn_et(v) && v.length > 2) ? (v[2]) : (null))) : ((!ckieUtil.fn_et(v) && v.length > 2) ? (v[2]) : (null)));
 	},
 	fn_del : function(k) {
-		document.cookie = ((encodeURIComponent(k)) + ("=") + (null) + ("; expires=") + ((new Date()).toUTCString()) + ("; path=/"));
-	},
-	fn_call : function(k, fn) {
-		if (ckieUtil.fn_get(k) == null) {
-			return (fn());
-		}
-	},
-	fn_prs : function(k, fn) {
-		return (fn(ckieUtil.fn_get(k)));
+		ckieUtil.fn_set(k, null);
 	}
 };

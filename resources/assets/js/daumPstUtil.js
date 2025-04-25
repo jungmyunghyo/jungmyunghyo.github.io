@@ -15,7 +15,7 @@ const daumPstUtil = {
 		$(bf).css("height",		((len > 2) ? (args[2]) : (window.innerHeight)));
 		$(bf).css("width",		((len > 3) ? (args[3]) : (window.innerWidth)));
 		$(bf).css("z-index",	((len > 4) ? (args[4]) : ("0")));
-		var html	= ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : ((document.getElementsByClassName(trgt) != null) ? (document.getElementsByClassName(trgt)[0]) : (document.querySelector("body"))));
+		var html	= ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : (document.getElementsByClassName(trgt)[0]));
 		daum.postcode.load(function() {
 			(new daum.Postcode({
 				oncomplete			: function(rst) {fn(rst);},

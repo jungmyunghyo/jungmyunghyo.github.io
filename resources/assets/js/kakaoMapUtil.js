@@ -16,8 +16,10 @@ let kakaoMapUtil = {
 	fn_get : function() {
 		var args	= (kakaoMapUtil.fn_get.arguments);
 		var len		= (args.length);
-		var id		= (args[0]);
-		$("#" + (id)).empty();
+		var trgt	= (args[0]);
+		var bf		= ((!!$("#" + (trgt)).length) ? ("#" + (trgt)) : ("." + (trgt)));
+		$(bf).empty();
+		var html	= ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : (document.getElementsByClassName(trgt)[0]));
 		var ops = {
 			center					: (kakaoMapUtil.fn_lat_lot(kakaoMapUtil._cntr_lat, kakaoMapUtil._cntr_lot)),
 			level					: (kakaoMapUtil._min_lv),
@@ -29,8 +31,8 @@ let kakaoMapUtil = {
 			disableDoubleClickZoom	: (true),
 			keyboardShortcuts		: (false)
 		};
-		kakaoMapUtil._map = (new kakao.maps.Map(document.getElementById(id), ops));
-		setTimeout(() => kakaoMapUtil.fn_resz(id, ((len > 1) ? (args[1]) : (window.innerHeight)), ((len > 2) ? (args[2]) : (window.innerWidth)), ((len > 3) ? (args[3]) : ("0"))), 500);
+		kakaoMapUtil._map = (new kakao.maps.Map(html, ops));
+		setTimeout(() => kakaoMapUtil.fn_resz(trgt, ((len > 1) ? (args[1]) : (window.innerHeight)), ((len > 2) ? (args[2]) : (window.innerWidth)), ((len > 3) ? (args[3]) : ("0"))), 500);
 		setTimeout(() => kakaoMapUtil._map.relayout(), 600);
 		setTimeout(() => kakaoMapUtil.fn_hndlr(), 700);
 		setTimeout(() => kakaoMapUtil.fn_gps(kakaoMapUtil.fn_gps_y, kakaoMapUtil.fn_gps_n), 800);
@@ -92,10 +94,11 @@ let kakaoMapUtil = {
 		});
 		return (mrk);
 	},
-	fn_resz : function(id, h, w, z) {
-		$("#" + (id)).css("height", h);
-		$("#" + (id)).css("width", w);
-		$("#" + (id)).css("z-index", z);
+	fn_resz : function(trgt, h, w, z) {
+		var bf		= ((!!$("#" + (trgt)).length) ? ("#" + (trgt)) : ("." + (trgt)));
+		$(bf).css("height",		(h));
+		$(bf).css("width",		(w));
+		$(bf).css("z-index",	(z));
 	},
 	fn_lat_lot : function(lat, lot) {
 		return (new kakao.maps.LatLng(((lat == null || lat == "" || lat == undefined) ? (kakaoMapUtil._cntr_lat) : (lat)), ((lot == null || lot == "" || lot == undefined) ? (kakaoMapUtil._cntr_lot) : (lot))));
@@ -123,11 +126,13 @@ let kakaoClstrMapUtil = {
 	_clstr_lv	: (8),
 	_pst		: ([]),
 	_mrk		: ([]),
-	fn_get : function(id) {
+	fn_get : function() {
 		var args	= (kakaoClstrMapUtil.fn_get.arguments);
 		var len		= (args.length);
-		var id		= (args[0]);
-		$("#" + (id)).empty();
+		var trgt	= (args[0]);
+		var bf		= ((!!$("#" + (trgt)).length) ? ("#" + (trgt)) : ("." + (trgt)));
+		$(bf).empty();
+		var html	= ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : (document.getElementsByClassName(trgt)[0]));
 		var ops = {
 			center					: (kakaoMapUtil.fn_lat_lot(kakaoMapUtil._cntr_lat, kakaoMapUtil._cntr_lot)),
 			level					: (kakaoClstrMapUtil._min_lv),
@@ -139,8 +144,8 @@ let kakaoClstrMapUtil = {
 			disableDoubleClickZoom	: (true),
 			keyboardShortcuts		: (false)
 		};
-		kakaoClstrMapUtil._map = (new kakao.maps.Map(document.getElementById(id), ops));
-		setTimeout(() => kakaoMapUtil.fn_resz(id, ((len > 1) ? (args[1]) : (window.innerHeight)), ((len > 2) ? (args[2]) : (window.innerWidth)), ((len > 3) ? (args[3]) : ("0"))), 500);
+		kakaoClstrMapUtil._map = (new kakao.maps.Map(html, ops));
+		setTimeout(() => kakaoMapUtil.fn_resz(trgt, ((len > 1) ? (args[1]) : (window.innerHeight)), ((len > 2) ? (args[2]) : (window.innerWidth)), ((len > 3) ? (args[3]) : ("0"))), 500);
 		setTimeout(() => kakaoClstrMapUtil._map.relayout(), 600);
 		setTimeout(() => kakaoClstrMapUtil.fn_hndlr(), 700);
 		setTimeout(() => kakaoClstrMapUtil.fn_clstr(), 800);
@@ -222,21 +227,23 @@ let kakaoStaticMapUtil = {
 	fn_get : function() {
 		var args	= (kakaoStaticMapUtil.fn_get.arguments);
 		var len		= (args.length);
-		var id		= (args[0]);
+		var trgt	= (args[0]);
 		var lat		= (args[1]);
 		var lot		= (args[2]);
-		$("#" + (id)).empty();
-		$("#" + (id)).css("height", ((len > 3) ? (args[3]) : (window.innerHeight)));
-		$("#" + (id)).css("width", ((len > 4) ? (args[4]) : (window.innerWidth)));
-		$("#" + (id)).css("z-index", ((len > 5) ? (args[5]) : ("0")));
+		var bf		= ((!!$("#" + (trgt)).length) ? ("#" + (trgt)) : ("." + (trgt)));
+		$(bf).empty();
+		$(bf).css("height",		((len > 3) ? (args[3]) : (window.innerHeight)));
+		$(bf).css("width",		((len > 4) ? (args[4]) : (window.innerWidth)));
+		$(bf).css("z-index",	((len > 5) ? (args[5]) : ("0")));
+		var html	= ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : (document.getElementsByClassName(trgt)[0]));
 		var ops = {
 			center	: (new kakao.maps.LatLng(lat, lot)),
 			level	: (kakaoStaticMapUtil._lv),
 			marker	: ({position:(new kakao.maps.LatLng(lat, lot))})
 		};
-		kakaoStaticMapUtil._map = (new kakao.maps.StaticMap(document.getElementById(id), ops));
-		setTimeout(() => $("#" + (id)).find("a").attr("href", "javascript:void(0);"), 100);
-		setTimeout(() => $("#" + (id)).find("a").attr("target", ""), 200);
+		kakaoStaticMapUtil._map = (new kakao.maps.StaticMap(html, ops));
+		setTimeout(() => $(bf).find("a").attr("href", "javascript:void(0);"), 100);
+		setTimeout(() => $(bf).find("a").attr("target", ""), 200);
 	}
 };
 let kakaoGeocoderUtil = {

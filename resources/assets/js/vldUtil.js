@@ -5,7 +5,7 @@ const vldUtil = {
 	fn_alrt : function(o, tp) {
 		var v		= ($(o).val());
 		var msg		= ((o.hasAttribute("placeholder")) ? ($(o).attr("placeholder")) : ((o.hasAttribute("msg")) ? ($(o).attr("msg")) : ("필수 값을 확인해주세요.")));
-		var f		= (!(((tp == "text" || tp == "textarea" || tp == "radio" || tp == "select") && ((v == null || v == undefined) || (!v.trim().length))) || (tp == "checkbox" && !$(o).prop("checked")) || (tp == "validation")));
+		var f		= (!(((tp == "text" || tp == "textarea" || tp == "radio" || tp == "select") && (vldUtil.fn_et(v))) || (tp == "checkbox" && !$(o).prop("checked")) || (tp == "validation")));
 		((!f) ? (alert(msg)) : (""));
 		((!f) ? ($(o).focus()) : (""));
 		return (f);

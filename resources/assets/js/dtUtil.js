@@ -198,24 +198,26 @@ const dtCalUtil = {
 	fn_set			: function() {
 		var args	= (dtCalUtil.fn_set.arguments);
 		var len		= (args.length);
-		var sId		= (args[0]);
-		var sAdd	= ((len > 1) ? (args[1]) : ("0D"));
+		var sTrgt	= (args[0]);
+		var sAdd	= ((len > 2) ? (args[1]) : ("0D"));
 		var eAdd	= ((len > 2) ? (args[2]) : ("0D"));
-		var eId		= ((len > 3) ? (args[3]) : (null));
+		var eTrgt	= ((len > 3) ? (args[3]) : (""));
+		var sBf		= ((!!$("#" + (sTrgt)).length) ? ("#" + (sTrgt)) : ("." + (sTrgt)));
+		var eBf		= ((!!$("#" + (eTrgt)).length) ? ("#" + (eTrgt)) : ("." + (eTrgt)));
 		if (len > 3) {
-			$(dtCalUtil.fn_get(sId, sAdd, eAdd)).datepicker("setDate", (sAdd)).on("change", function() {
-				$(eId).datepicker("option", "minDate", (dtCalUtil.fn_prs(this)));
+			$(dtCalUtil.fn_get(sBf, sAdd, eAdd)).datepicker("setDate", (sAdd)).on("change", function() {
+				$(eBf).datepicker("option", "minDate", (dtCalUtil.fn_prs(this)));
 			});
-			$(dtCalUtil.fn_get(eId, sAdd, eAdd)).datepicker("setDate", (eAdd)).on("change", function() {
-				$(sId).datepicker("option", "maxDate", (dtCalUtil.fn_prs(this)));
+			$(dtCalUtil.fn_get(eBf, sAdd, eAdd)).datepicker("setDate", (eAdd)).on("change", function() {
+				$(sBf).datepicker("option", "maxDate", (dtCalUtil.fn_prs(this)));
 			});
 		} else {
-			dtCalUtil.fn_get(sId, sAdd, eAdd);
+			dtCalUtil.fn_get(sBf, sAdd, eAdd);
 		}
 	},
-	fn_get			: function(id, sAdd, eAdd) {
+	fn_get			: function(trgt, sAdd, eAdd) {
 		return (
-			$(id).datepicker({
+			$(trgt).datepicker({
 				buttonImage			: (dtCalUtil._img),
 				buttonImageOnly		: (true),
 				buttonText			: (null),

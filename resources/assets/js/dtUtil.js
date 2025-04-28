@@ -192,6 +192,12 @@ const dtCalUtil = {
 	_prev			: ("이전"),
 	_next			: ("다음"),
 	_oth_m_yn		: (true),
+	fn_et : function(v) {
+		return ((v == null || v == undefined) || (typeof v == "string" && !v.trim().length) || ((typeof v == "object") && ((Array.isArray(v) && !v.length) || (!Object.keys(v).length))) || (typeof v == "boolean" && !v));
+	},
+	fn_trgt : function(trgt) {
+		return ((dtCalUtil.fn_et(trgt)) ? ((document.querySelector("body") != null) ? (document.querySelector("body")) : (document.querySelector("html"))) : ((trgt.indexOf("#") > -1 || trgt.indexOf(".") > -1) ? ((document.querySelector(trgt) != null) ? (document.querySelector(trgt)) : (dtCalUtil.fn_trgt(null))) : ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : ((!!document.getElementsByClassName(trgt).length) ? (document.getElementsByClassName(trgt)[0]) : (dtCalUtil.fn_trgt(null))))));
+	},
 	fn_prs			: function(o) {
 		try {return ($.datepicker.parseDate((dtCalUtil._fmt), (o.value)));} catch (e) {return (null);}
 	},
@@ -202,17 +208,17 @@ const dtCalUtil = {
 		var sAdd	= ((len > 2) ? (args[1]) : ("0D"));
 		var eAdd	= ((len > 2) ? (args[2]) : ("0D"));
 		var eTrgt	= ((len > 3) ? (args[3]) : (""));
-		var sBf		= ((!!$("#" + (sTrgt)).length) ? ("#" + (sTrgt)) : ("." + (sTrgt)));
-		var eBf		= ((!!$("#" + (eTrgt)).length) ? ("#" + (eTrgt)) : ("." + (eTrgt)));
+		var sHtml	= (dtCalUtil.fn_trgt(sTrgt));
+		var eHtml	= (dtCalUtil.fn_trgt(eTrgt));
 		if (len > 3) {
-			$(dtCalUtil.fn_get(sBf, sAdd, eAdd)).datepicker("setDate", (sAdd)).on("change", function() {
-				$(eBf).datepicker("option", "minDate", (dtCalUtil.fn_prs(this)));
+			$(dtCalUtil.fn_get(sHtml, sAdd, eAdd)).datepicker("setDate", (sAdd)).on("change", function() {
+				$(eHtml).datepicker("option", "minDate", (dtCalUtil.fn_prs(this)));
 			});
-			$(dtCalUtil.fn_get(eBf, sAdd, eAdd)).datepicker("setDate", (eAdd)).on("change", function() {
-				$(sBf).datepicker("option", "maxDate", (dtCalUtil.fn_prs(this)));
+			$(dtCalUtil.fn_get(eHtml, sAdd, eAdd)).datepicker("setDate", (eAdd)).on("change", function() {
+				$(sHtml).datepicker("option", "maxDate", (dtCalUtil.fn_prs(this)));
 			});
 		} else {
-			dtCalUtil.fn_get(sBf, sAdd, eAdd);
+			dtCalUtil.fn_get(sHtml, sAdd, eAdd);
 		}
 	},
 	fn_get			: function(trgt, sAdd, eAdd) {

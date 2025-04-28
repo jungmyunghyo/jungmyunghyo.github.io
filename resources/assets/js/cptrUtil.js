@@ -2,14 +2,22 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 */
 const cptrUtil = {
+	fn_et : function(v) {
+		return ((v == null || v == undefined) || (typeof v == "string" && !v.trim().length) || ((typeof v == "object") && ((Array.isArray(v) && !v.length) || (!Object.keys(v).length))) || (typeof v == "boolean" && !v));
+	},
+	fn_zero : function(v) {
+		return ((v < 10) ? (("0") + (v)) : (v));
+	},
+	fn_trgt : function(trgt) {
+		return ((cptrUtil.fn_et(trgt)) ? ((document.querySelector("body") != null) ? (document.querySelector("body")) : (document.querySelector("html"))) : ((trgt.indexOf("#") > -1 || trgt.indexOf(".") > -1) ? ((document.querySelector(trgt) != null) ? (document.querySelector(trgt)) : (cptrUtil.fn_trgt(null))) : ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : ((!!document.getElementsByClassName(trgt).length) ? (document.getElementsByClassName(trgt)[0]) : (cptrUtil.fn_trgt(null))))));
+	},
 	fn_get : function() {
 		var args	= (cptrUtil.fn_get.arguments);
 		var len		= (args.length);
 		var trgt	= ((len > 0) ? (args[0]) : (""));
 		var nm		= ((len > 1) ? (args[1]) : ("captured_image"));
 		var tp		= ((len > 2) ? (args[2]) : ("png"));
-		var html	= ((!len) ? (document.querySelector("body")) : ((document.getElementById(trgt) != null) ? (document.getElementById(trgt)) : ((document.getElementsByClassName(trgt) != null) ? (document.getElementsByClassName(trgt)[0]) : (document.querySelector("html")))));
-		html2canvas(html, {
+		html2canvas(cptrUtil.fn_trgt(trgt), {
 			allowTaint		: (true),
 			useCORS			: (true),
 			ignoreElements	: (true),
@@ -28,8 +36,5 @@ const cptrUtil = {
 				link.click();
 			}
 		});
-	},
-	fn_zero : function(v) {
-		return ((v < 10) ? (("0") + (v)) : (v));
 	}
 };

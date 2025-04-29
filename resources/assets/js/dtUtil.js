@@ -246,7 +246,7 @@ const dtCalUtil = {
 				showMonthAfterYear	: (true),
 				showOn				: ("both"),
 				showWeek			: (false)
-			}).datepicker("setDate", ("0D")).attr("readonly", dtCalUtil._rd_yn)
+			}).datepicker("setDate", ("0D")).prop("readonly", dtCalUtil._rd_yn)
 		);
 	}
 };

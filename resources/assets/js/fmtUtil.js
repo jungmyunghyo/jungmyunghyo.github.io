@@ -84,23 +84,23 @@ const fmtUtil = {
 	fn_rplc_int				: function(vo) {return (((typeof vo == "object") ? ($(vo).val()) : (vo)).replace($rplc_int,			"").replace(/(^0+)/g, ""	)							);},
 	fn_rplc_addr			: function(vo) {return (((typeof vo == "object") ? ($(vo).val()) : (vo)).replace($rplc_addr,		"").replace(/[\s][\s]/g, " ")							);},
 	fn_rplc_addr_dtl		: function(vo) {return (((typeof vo == "object") ? ($(vo).val()) : (vo)).replace($rplc_addr_dtl,	"").replace(/[\s][\s]/g, " ")							);},
-	fn_input_nm				: function(vo) {$(vo).val(fmtUtil.fn_rplc_nm(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "30"));(fmtUtil.fn_vld(vo, $vld_nm));																	},
-	fn_input_email			: function(vo) {$(vo).val(fmtUtil.fn_rplc_email(	vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "50"));(fmtUtil.fn_vld(vo, $vld_email));																},
-	fn_input_id				: function(vo) {$(vo).val(fmtUtil.fn_rplc_id(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "20"));(fmtUtil.fn_vld(vo, $vld_id));																	},
-	fn_input_paspt			: function(vo) {$(vo).val(fmtUtil.fn_rplc_paspt(	vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "8" ));(fmtUtil.fn_vld(vo, $vld_paspt));																},
-	fn_input_ip				: function(vo) {$(vo).val(fmtUtil.fn_rplc_ip(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "15"));(fmtUtil.fn_vld(vo, $vld_ip));	(fmtUtil.fn_msg(vo, "xxx.xxx.xxx.xxx 형태로 입력해 주세요."));		},
-	fn_input_ssn			: function(vo) {$(vo).val(fmtUtil.fn_rplc_ssn(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "13"));(fmtUtil.fn_vld(vo, $vld_ssn));	(fmtUtil.fn_msg(vo, "xxxxxx-nnnnnn 형태로 입력해 주세요."));			},
-	fn_input_cph			: function(vo) {$(vo).val(fmtUtil.fn_rplc_cph(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "11"));(fmtUtil.fn_vld(vo, $vld_cph));	(fmtUtil.fn_msg(vo, "010-xxxx-nnnn 형태로 입력해 주세요."));			},
-	fn_input_card			: function(vo) {$(vo).val(fmtUtil.fn_rplc_card(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "16"));(fmtUtil.fn_vld(vo, $vld_card));	(fmtUtil.fn_msg(vo, "xxxx-nnnn-xxxx-nnnn 형태로 입력해 주세요."));	},
-	fn_input_mmyy			: function(vo) {$(vo).val(fmtUtil.fn_rplc_mmyy(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "4" ));(fmtUtil.fn_vld(vo, $vld_mmyy));	(fmtUtil.fn_msg(vo, "mm/yy 형태로 입력해 주세요."));					},
-	fn_input_drvg			: function(vo) {$(vo).val(fmtUtil.fn_rplc_drvg(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "12"));(fmtUtil.fn_vld(vo, $vld_drvg));	(fmtUtil.fn_msg(vo, "xx-nn-xxxxxx-nn 형태로 입력해 주세요."));		},
-	fn_input_car			: function(vo) {$(vo).val(fmtUtil.fn_rplc_car(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "7" ));(fmtUtil.fn_vld(vo, $vld_car));																	},
-	fn_input_bizr			: function(vo) {$(vo).val(fmtUtil.fn_rplc_bizr(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "10"));(fmtUtil.fn_vld(vo, $vld_bizr));	(fmtUtil.fn_msg(vo, "xxx-nn-xxxxx 형태로 입력해 주세요."));			},
-	fn_input_acct			: function(vo) {$(vo).val(fmtUtil.fn_rplc_acct(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "30"));(fmtUtil.fn_vld(vo, $vld_acct));																	},
-	fn_input_pst			: function(vo) {$(vo).val(fmtUtil.fn_rplc_pst(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "7" ));(fmtUtil.fn_vld(vo, $vld_pst));																	},
-	fn_input_int			: function(vo) {$(vo).val(fmtUtil.fn_rplc_int(		vo));						(fmtUtil.fn_max(vo, "9" ));(fmtUtil.fn_vld(vo, $vld_int));																	},
-	fn_input_addr			: function(vo) {$(vo).val(fmtUtil.fn_rplc_addr(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "50"));																									},
-	fn_input_addr_dtl		: function(vo) {$(vo).val(fmtUtil.fn_rplc_addr_dtl(	vo));						(fmtUtil.fn_max(vo, "99"));																									},
+	fn_input_nm				: function(vo) {$(vo).val(fmtUtil.fn_rplc_nm(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "30"));(fmtUtil.fn_vld(vo, $vld_nm));																	},
+	fn_input_email			: function(vo) {$(vo).val(fmtUtil.fn_rplc_email(	vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "50"));(fmtUtil.fn_vld(vo, $vld_email));																},
+	fn_input_id				: function(vo) {$(vo).val(fmtUtil.fn_rplc_id(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "20"));(fmtUtil.fn_vld(vo, $vld_id));																	},
+	fn_input_paspt			: function(vo) {$(vo).val(fmtUtil.fn_rplc_paspt(	vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "8" ));(fmtUtil.fn_vld(vo, $vld_paspt));																},
+	fn_input_ip				: function(vo) {$(vo).val(fmtUtil.fn_rplc_ip(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "decimal"));	(fmtUtil.fn_max(vo, "15"));(fmtUtil.fn_vld(vo, $vld_ip));	(fmtUtil.fn_msg(vo, "xxx.xxx.xxx.xxx 형태로 입력해 주세요."));		},
+	fn_input_ssn			: function(vo) {$(vo).val(fmtUtil.fn_rplc_ssn(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "13"));(fmtUtil.fn_vld(vo, $vld_ssn));	(fmtUtil.fn_msg(vo, "xxxxxx-nnnnnn 형태로 입력해 주세요."));			},
+	fn_input_cph			: function(vo) {$(vo).val(fmtUtil.fn_rplc_cph(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "11"));(fmtUtil.fn_vld(vo, $vld_cph));	(fmtUtil.fn_msg(vo, "010-xxxx-nnnn 형태로 입력해 주세요."));			},
+	fn_input_card			: function(vo) {$(vo).val(fmtUtil.fn_rplc_card(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "16"));(fmtUtil.fn_vld(vo, $vld_card));	(fmtUtil.fn_msg(vo, "xxxx-nnnn-xxxx-nnnn 형태로 입력해 주세요."));	},
+	fn_input_mmyy			: function(vo) {$(vo).val(fmtUtil.fn_rplc_mmyy(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "4" ));(fmtUtil.fn_vld(vo, $vld_mmyy));	(fmtUtil.fn_msg(vo, "mm/yy 형태로 입력해 주세요."));					},
+	fn_input_drvg			: function(vo) {$(vo).val(fmtUtil.fn_rplc_drvg(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "12"));(fmtUtil.fn_vld(vo, $vld_drvg));	(fmtUtil.fn_msg(vo, "xx-nn-xxxxxx-nn 형태로 입력해 주세요."));		},
+	fn_input_car			: function(vo) {$(vo).val(fmtUtil.fn_rplc_car(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "7" ));(fmtUtil.fn_vld(vo, $vld_car));																	},
+	fn_input_bizr			: function(vo) {$(vo).val(fmtUtil.fn_rplc_bizr(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "10"));(fmtUtil.fn_vld(vo, $vld_bizr));	(fmtUtil.fn_msg(vo, "xxx-nn-xxxxx 형태로 입력해 주세요."));			},
+	fn_input_acct			: function(vo) {$(vo).val(fmtUtil.fn_rplc_acct(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "30"));(fmtUtil.fn_vld(vo, $vld_acct));																	},
+	fn_input_pst			: function(vo) {$(vo).val(fmtUtil.fn_rplc_pst(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "7" ));(fmtUtil.fn_vld(vo, $vld_pst));																	},
+	fn_input_int			: function(vo) {$(vo).val(fmtUtil.fn_rplc_int(		vo));(fmtUtil.fn_auto(vo, false));								(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "9" ));(fmtUtil.fn_vld(vo, $vld_int));																	},
+	fn_input_addr			: function(vo) {$(vo).val(fmtUtil.fn_rplc_addr(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));									(fmtUtil.fn_max(vo, "50"));																									},
+	fn_input_addr_dtl		: function(vo) {$(vo).val(fmtUtil.fn_rplc_addr_dtl(	vo));(fmtUtil.fn_auto(vo, false));																(fmtUtil.fn_max(vo, "99"));																									},
 	fn_fmt_ssn				: function(vo) {return (fmtUtil.fn_fmt(fmtUtil.fn_rplc_ssn(vo), 6, "-"));														},
 	fn_fmt_cph				: function(vo) {return (fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_cph(vo), 3, "-"), (8), "-"));								},
 	fn_fmt_card				: function(vo) {return (fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_card(vo), 4, "-"), (9), "-"), (14), "-"));	},
@@ -108,13 +108,13 @@ const fmtUtil = {
 	fn_fmt_drvg				: function(vo) {return (fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_drvg(vo), 2, "-"), (5), "-"), (12), "-"));	},
 	fn_fmt_bizr				: function(vo) {return (fmtUtil.fn_fmt(fmtUtil.fn_fmt(fmtUtil.fn_rplc_bizr(vo), 3, "-"), (6), "-"));							},
 	fn_fmt_int				: function(vo) {return (fmtUtil.fn_rplc_int(vo).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));								},
-	fn_input_fmt_ssn		: function(vo) {$(vo).val(fmtUtil.fn_fmt_ssn(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "14"));(fmtUtil.fn_vld(vo, $vld_ssn));	(fmtUtil.fn_msg(vo, "xxxxxx-nnnnnn 형태로 입력해 주세요."));			(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_ssn(vo)));},
-	fn_input_fmt_cph		: function(vo) {$(vo).val(fmtUtil.fn_fmt_cph(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "13"));(fmtUtil.fn_vld(vo, $vld_cph));	(fmtUtil.fn_msg(vo, "010-xxxx-nnnn 형태로 입력해 주세요."));			(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_cph(vo)));},
-	fn_input_fmt_card		: function(vo) {$(vo).val(fmtUtil.fn_fmt_card(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "19"));(fmtUtil.fn_vld(vo, $vld_card));	(fmtUtil.fn_msg(vo, "xxxx-nnnn-xxxx-nnnn 형태로 입력해 주세요."));	(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_card(vo)));},
-	fn_input_fmt_mmyy		: function(vo) {$(vo).val(fmtUtil.fn_fmt_mmyy(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "5" ));(fmtUtil.fn_vld(vo, $vld_mmyy));	(fmtUtil.fn_msg(vo, "mm/yy 형태로 입력해 주세요."));					(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_mmyy(vo)));},
-	fn_input_fmt_drvg		: function(vo) {$(vo).val(fmtUtil.fn_fmt_drvg(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "15"));(fmtUtil.fn_vld(vo, $vld_drvg));	(fmtUtil.fn_msg(vo, "xx-nn-xxxxxx-nn 형태로 입력해 주세요."));		(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_drvg(vo)));},
-	fn_input_fmt_bizr		: function(vo) {$(vo).val(fmtUtil.fn_fmt_bizr(		vo));(fmtUtil.fn_req(vo));	(fmtUtil.fn_max(vo, "12"));(fmtUtil.fn_vld(vo, $vld_bizr));	(fmtUtil.fn_msg(vo, "xxx-nn-xxxxx 형태로 입력해 주세요."));			(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_bizr(vo)));},
-	fn_input_fmt_int		: function(vo) {$(vo).val(fmtUtil.fn_fmt_int(		vo));						(fmtUtil.fn_max(vo, "12"));(fmtUtil.fn_vld(vo, $vld_int));																	(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_int(vo)));},
+	fn_input_fmt_ssn		: function(vo) {$(vo).val(fmtUtil.fn_fmt_ssn(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "14"));(fmtUtil.fn_vld(vo, $vld_ssn));	(fmtUtil.fn_msg(vo, "xxxxxx-nnnnnn 형태로 입력해 주세요."));			(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_ssn(vo)));},
+	fn_input_fmt_cph		: function(vo) {$(vo).val(fmtUtil.fn_fmt_cph(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "13"));(fmtUtil.fn_vld(vo, $vld_cph));	(fmtUtil.fn_msg(vo, "010-xxxx-nnnn 형태로 입력해 주세요."));			(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_cph(vo)));},
+	fn_input_fmt_card		: function(vo) {$(vo).val(fmtUtil.fn_fmt_card(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "19"));(fmtUtil.fn_vld(vo, $vld_card));	(fmtUtil.fn_msg(vo, "xxxx-nnnn-xxxx-nnnn 형태로 입력해 주세요."));	(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_card(vo)));},
+	fn_input_fmt_mmyy		: function(vo) {$(vo).val(fmtUtil.fn_fmt_mmyy(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "5" ));(fmtUtil.fn_vld(vo, $vld_mmyy));	(fmtUtil.fn_msg(vo, "mm/yy 형태로 입력해 주세요."));					(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_mmyy(vo)));},
+	fn_input_fmt_drvg		: function(vo) {$(vo).val(fmtUtil.fn_fmt_drvg(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "15"));(fmtUtil.fn_vld(vo, $vld_drvg));	(fmtUtil.fn_msg(vo, "xx-nn-xxxxxx-nn 형태로 입력해 주세요."));		(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_drvg(vo)));},
+	fn_input_fmt_bizr		: function(vo) {$(vo).val(fmtUtil.fn_fmt_bizr(		vo));(fmtUtil.fn_auto(vo, false));(fmtUtil.fn_req(vo, true));	(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "12"));(fmtUtil.fn_vld(vo, $vld_bizr));	(fmtUtil.fn_msg(vo, "xxx-nn-xxxxx 형태로 입력해 주세요."));			(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_bizr(vo)));},
+	fn_input_fmt_int		: function(vo) {$(vo).val(fmtUtil.fn_fmt_int(		vo));(fmtUtil.fn_auto(vo, false));								(fmtUtil.fn_md(vo, "numeric"));	(fmtUtil.fn_max(vo, "12"));(fmtUtil.fn_vld(vo, $vld_int));																	(fmtUtil.fn_rplc(vo, fmtUtil.fn_rplc_int(vo)));},
 	fn_fmt					: function(v, len, rplc) {
 		if ((v.length) > len) {
 			var lst = (v.substring(len));
@@ -124,11 +124,13 @@ const fmtUtil = {
 		}
 		return (v.replace(((rplc) + (rplc)), rplc));
 	},
-	fn_req					: function(o)		{((!o.hasAttribute("required")) ? ($(o).prop("required", true)) : (""));},
-	fn_max					: function(o, max)	{((!o.hasAttribute("maxlength") || $(o).prop("maxlength") != max) ? ($(o).prop("maxlength", max)) : (""));},
-	fn_vld					: function(o, vld)	{((!o.hasAttribute("vld") || $(o).prop("vld") != vld) ? ($(o).attr("vld", vld)) : (""));},	
-	fn_rplc					: function(o, rplc)	{((!o.hasAttribute("rplc") || $(o).prop("rplc") != rplc) ? ($(o).attr("rplc", rplc)) : (""));},
-	fn_msg					: function(o, msg) 	{((!o.hasAttribute("msg") || $(o).attr("msg") != msg) ? ($(o).attr("msg", msg)) : (""));},
+	fn_req					: function(o, f)	{((!o.hasAttribute("required")	|| $(o).prop("required") != f)		? ($(o).prop("required", f)) : (""));},
+	fn_max					: function(o, max)	{((!o.hasAttribute("maxlength")	|| $(o).prop("maxlength") != max)	? ($(o).prop("maxlength", max)) : (""));},
+	fn_vld					: function(o, vld)	{((!o.hasAttribute("data-vld")	|| $(o).prop("data-vld") != vld)	? ($(o).attr("data-vld", vld)) : (""));},	
+	fn_rplc					: function(o, rplc)	{((!o.hasAttribute("data-rplc")	|| $(o).prop("data-rplc") != rplc)	? ($(o).attr("data-rplc", rplc)) : (""));},
+	fn_msg					: function(o, msg) 	{((!o.hasAttribute("data-msg")	|| $(o).prop("data-msg") != msg)	? ($(o).attr("data-msg", msg)) : (""));},
+	fn_auto					: function(o, f)	{((!o.hasAttribute("autocomplete"))									? ($(o).prop("autocomplete", ((f) ? ("on") : ("off")))) : (""));},
+	fn_md					: function(o, tp)	{((!o.hasAttribute("inputmode")	|| $(o).prop("inputmode") != tp)	? ($(o).attr("inputmode", tp)) : (""));},
 	fn_reset				: function() {
 		$("input[type=text].input_is_nm"		).each(			function() {$(this).prop("oninput",	fmtUtil.fn_input_nm(this));			});
 		$("input[type=text].input_is_email"		).each(			function() {$(this).prop("oninput",	fmtUtil.fn_input_email(this));		});
@@ -178,6 +180,30 @@ const fmtUtil = {
 		$("input[type=text].input_is_fmt_drvg"	).on("input",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_drvg(this));	});
 		$("input[type=text].input_is_fmt_bizr"	).on("input",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_bizr(this));	});
 		$("input[type=text].input_is_fmt_int"	).on("input",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_int(this));	});
+		$("input[type=text].input_is_nm"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_nm(this));			});
+		$("input[type=text].input_is_email"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_email(this));		});
+		$("input[type=text].input_is_id"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_id(this));			});
+		$("input[type=text].input_is_paspt"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_paspt(this));		});
+		$("input[type=text].input_is_ip"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_ip(this));			});
+		$("input[type=text].input_is_ssn"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_ssn(this));		});
+		$("input[type=text].input_is_cph"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_cph(this));		});
+		$("input[type=text].input_is_card"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_card(this));		});
+		$("input[type=text].input_is_mmyy"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_mmyy(this));		});
+		$("input[type=text].input_is_drvg"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_drvg(this));		});
+		$("input[type=text].input_is_car"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_car(this));		});
+		$("input[type=text].input_is_bizr"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_bizr(this));		});
+		$("input[type=text].input_is_acct"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_acct(this));		});
+		$("input[type=text].input_is_pst"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_pst(this));		});
+		$("input[type=text].input_is_int"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_int(this));		});
+		$("input[type=text].input_is_addr"		).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_addr(this));		});
+		$("input[type=text].input_is_addr_dtl"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_addr_dtl(this));	});
+		$("input[type=text].input_is_fmt_ssn"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_ssn(this));	});
+		$("input[type=text].input_is_fmt_cph"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_cph(this));	});
+		$("input[type=text].input_is_fmt_card"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_card(this));	});
+		$("input[type=text].input_is_fmt_mmyy"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_mmyy(this));	});
+		$("input[type=text].input_is_fmt_drvg"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_drvg(this));	});
+		$("input[type=text].input_is_fmt_bizr"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_bizr(this));	});
+		$("input[type=text].input_is_fmt_int"	).on("focus",	function() {$(this).prop("oninput",	fmtUtil.fn_input_fmt_int(this));	});
 	}
 };
 $(document).ready(function() {

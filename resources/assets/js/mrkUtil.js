@@ -6,7 +6,7 @@ const mrkUtil = {
 		return ((mrkUtil.fn_et(bf)) ? ($(o).attr(attr)) : ((bf) + ($(o).attr(attr).substring(0, 1).toUpperCase()) + ($(o).attr(attr).substring(1))));
 	},
 	fn_val : function(o, tp) {
-		return ((tp == "text") ? ((o.hasAttribute("rplc")) ? ($(o).attr("rplc")) : ($(o).val())) : ((tp == "checkbox") ? (($(o).prop("checked")) ? ($(o).val()) : ((o.hasAttribute("els")) ? ($(o).attr("els")) : (""))) : ($(o).val())));
+		return ((tp == "text") ? ((o.hasAttribute("data-rplc")) ? ($(o).attr("data-rplc")) : ($(o).val())) : ((tp == "checkbox") ? (($(o).prop("checked")) ? ($(o).val()) : ((o.hasAttribute("data-els")) ? ($(o).attr("data-els")) : (""))) : ($(o).val())));
 	},
 	fn_params : function() {
 		var args	= (mrkUtil.fn_params.arguments);

@@ -4,7 +4,7 @@ const vldUtil = {
 	},
 	fn_alrt : function(o, tp) {
 		var v		= ($(o).val());
-		var msg		= ((o.hasAttribute("placeholder")) ? ($(o).attr("placeholder")) : ((o.hasAttribute("msg")) ? ($(o).attr("msg")) : ("필수 값을 확인해주세요.")));
+		var msg		= ((o.hasAttribute("placeholder")) ? ($(o).prop("placeholder")) : ((o.hasAttribute("data-msg")) ? ($(o).attr("data-msg")) : ("필수 값을 확인해주세요.")));
 		var f		= (!(((tp == "text" || tp == "textarea" || tp == "radio" || tp == "select") && (vldUtil.fn_et(v))) || (tp == "checkbox" && !$(o).prop("checked")) || (tp == "validation")));
 		((!f) ? (alert(msg)) : (""));
 		((!f) ? ($(o).focus()) : (""));
@@ -17,7 +17,7 @@ const vldUtil = {
 		var f		= (true);
 		((!len) ? ($("input[type=text]")) : ($(prnt).find("input[type=text]"))).each(function() {
 			if (f && this.hasAttribute("required")) {f = (vldUtil.fn_alrt(this, "text"));}
-			if (f && this.hasAttribute("vld")) {f = (((new RegExp($(this).attr("vld"))).test($(this).val())) ? (true) : (vldUtil.fn_alrt(this, "validation")));}
+			if (f && this.hasAttribute("data-vld")) {f = (((new RegExp($(this).attr("data-vld"))).test($(this).val())) ? (true) : (vldUtil.fn_alrt(this, "validation")));}
 		});
 		((!len) ? ($("input[type=radio]:checked")) : ($(prnt).find("input[type=radio]:checked"))).each(function() {
 			if (f && $(this).prop("required")) {f = (vldUtil.fn_alrt(this, "radio"));}

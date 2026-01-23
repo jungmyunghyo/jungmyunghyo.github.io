@@ -1,0 +1,9 @@
+.div-body-title-sub::before {
+	content:"\25B9 ";
+}
+.li-item::before {
+	content:"\2022 ";
+}
+.li-item-sub::before {
+	content:"\25B9 ";
+}
